@@ -1,0 +1,212 @@
+#
+# Name der VM:
+# UbuntuClient-22.04x64
+#
+# Betriebssystem:
+# Ubuntu Desktop 22.04 LTS
+#
+# !!!!!! "machine-id" zurückgesetzt: echo "uninitialized" | sudo tee /etc/machine-id && shutdown now
+#
+# Erstellt am 04.05.23 matjur
+#
+#==============================
+.encoding = "windows-1252"
+config.version = "8"
+virtualHW.version = "19"
+firmware = "efi"
+#
+# CPU
+#=============================
+numvcpus = "2"
+cpuid.coresPerSocket = "2"
+vcpu.hotadd = "TRUE"
+#
+# Memory
+#==============================
+memsize = "3072"
+mem.hotadd = "TRUE"
+#
+# NVMe Disk
+#==============================
+nvme0.present = "TRUE"
+nvme0:0.fileName = "UbuntuClient-22.04x64-0.vmdk"
+nvme0:0.redo = ""
+nvme0.pciSlotNumber = "224"
+#
+# CD-ROM
+#==============================
+sata0.present = "TRUE"
+sata0.pciSlotNumber = "36"
+sata0:1.deviceType = "cdrom-raw"
+sata0:1.fileName = "auto detect"
+sata0:1.present = "TRUE"
+sata0:1.autodetect = "TRUE"
+sata0:1.startConnected = "FALSE"
+#
+# Netzwerk
+#==============================
+ethernet0.addressType = "generated"
+ethernet0.virtualDev = "e1000e"
+ethernet0.present = "TRUE"
+ethernet0.pciSlotNumber = "160"
+ethernet0.generatedAddressOffset = "0"
+ethernet0.wakeOnPcktRcv = "FALSE"
+#
+# USB
+#==============================
+usb.present = "TRUE"
+usb.pciSlotNumber = "32"
+usb.vbluetooth.startConnected = "TRUE"
+usb_xhci.present = "TRUE"
+usb_xhci.pciSlotNumber = "192"
+ehci.present = "TRUE"
+ehci.pciSlotNumber = "34"
+#
+# Sound
+#==============================
+sound.autoDetect = "TRUE"
+sound.virtualDev = "hdaudio"
+sound.fileName = "-1"
+sound.present = "TRUE"
+sound.startConnected = "FALSE"
+sound.pciSlotNumber = "33"
+#
+# PCI
+#==============================
+pciBridge0.present = "TRUE"
+pciBridge4.present = "TRUE"
+pciBridge4.virtualDev = "pcieRootPort"
+pciBridge4.functions = "8"
+pciBridge5.present = "TRUE"
+pciBridge5.virtualDev = "pcieRootPort"
+pciBridge5.functions = "8"
+pciBridge6.present = "TRUE"
+pciBridge6.virtualDev = "pcieRootPort"
+pciBridge6.functions = "8"
+pciBridge7.present = "TRUE"
+pciBridge7.virtualDev = "pcieRootPort"
+pciBridge7.functions = "8"
+pciBridge0.pciSlotNumber = "17"
+pciBridge4.pciSlotNumber = "21"
+pciBridge5.pciSlotNumber = "22"
+pciBridge6.pciSlotNumber = "23"
+pciBridge7.pciSlotNumber = "24"
+#
+# Kommunikation Interface
+#==============================
+vmci0.present = "TRUE"
+vmci0.pciSlotNumber = "35"
+vmci0.id = "-1612656777"
+#
+# VMX allgemein
+#==============================
+displayName = "UbuntuClient-22.04x64"
+guestOS = "ubuntu-64"
+nvram = "UbuntuClient-22.04x64.nvram"
+virtualHW.productCompatibility = "hosted"
+hpet0.present = "TRUE"
+#
+# Tweaks
+#==============================
+prefvmx.minVmMemPct = "100" 
+mainMem.useNamedFile = "FALSE" 
+mainMem.partialLazySave = "FALSE" 
+mainMem.partialLazyRestore = "FALSE" 
+MemTrimRate = "30" 
+mainMem.backing = "swap" 
+sched.mem.pshare.enable = "FALSE" 
+prefvmx.useRecommendedLockedMemSize = "TRUE" 
+#
+# Verhalten VMWare Tools
+#==============================
+tools.syncTime = "TRUE"
+tools.upgrade.policy = "manual"
+tools.remindInstall = "FALSE"
+#
+# Interaktion Host - VM
+#==============================
+isolation.tools.hgfs.disable = "FALSE"
+isolation.tools.dnd.disable = "FALSE"
+isolation.tools.copy.enable = "TRUE"
+isolation.tools.paste.enabled = "TRUE"
+#
+# Hardware
+#==============================
+sensor.location = "pass-through"
+printers.enabled = "FALSE"
+nvme0:0.present = "TRUE"
+mks.enable3d = "TRUE"
+serial0.present = "FALSE"
+floppy0.present = "FALSE"
+#
+# Log
+#==============================
+logging = "FALSE"
+guestOS.detailed.data = ""
+#
+# Verhalten bei Abbruch
+#==============================
+gui.exitOnCLIHLT = "TRUE"
+gui.powerOnAtStartup = "FALSE"
+gui.fullScreenAtPowerOn = "FALSE"
+gui.exitAtPowerOff = "FALSE"
+gui.fitGuestUsingNativeDisplayResolution = "FALSE"
+cleanShutdown = "TRUE"
+replay.supported = "FALSE"
+replay.filename = ""
+#
+# Power Arten
+#==============================
+powerType.powerOff = "soft"
+powerType.powerOn = "soft"
+powerType.suspend = "soft"
+powerType.reset = "soft"
+softPowerOff = "TRUE"
+#
+# Snapshots
+#==============================
+snapshot.action = "keep"
+#
+# BIOS Options
+#==============================
+bios.bootdelay = "3000"
+#
+# Plug and Play Eintraege
+#==============================
+uuid.action = "create"
+extendedConfigFile = "UbuntuClient-22.04x64.vmxf"
+#
+uuid.bios = "56 4d de 1e 94 9b fb 1a-94 1c e3 9d 95 7f d5 69"
+uuid.location = "56 4d de 1e 94 9b fb 1a-94 1c e3 9d 95 7f d5 69"
+svga.vramSize = "268435456"
+vmotion.checkpointFBSize = "134217728"
+vmotion.checkpointSVGAPrimarySize = "268435456"
+vmotion.svga.mobMaxSize = "1073741824"
+vmotion.svga.graphicsMemoryKB = "262144"
+vmotion.svga.supports3D = "1"
+vmotion.svga.baseCapsLevel = "9"
+vmotion.svga.maxPointSize = "1"
+vmotion.svga.maxTextureSize = "16384"
+vmotion.svga.maxVolumeExtent = "2048"
+vmotion.svga.maxTextureAnisotropy = "16"
+vmotion.svga.lineStipple = "0"
+vmotion.svga.dxMaxConstantBuffers = "14"
+vmotion.svga.dxProvokingVertex = "0"
+vmotion.svga.sm41 = "1"
+vmotion.svga.multisample2x = "1"
+vmotion.svga.multisample4x = "1"
+vmotion.svga.msFullQuality = "1"
+vmotion.svga.logicOps = "1"
+vmotion.svga.bc67 = "9"
+vmotion.svga.sm5 = "1"
+vmotion.svga.multisample8x = "1"
+vmotion.svga.logicBlendOps = "1"
+ethernet0.generatedAddress = "00:0c:29:7f:d5:69"
+nvme0.subnqnUUID = "52 46 82 af 66 91 6a ec-d1 af ce 27 34 60 d7 08"
+monitor.phys_bits_used = "45"
+usb_xhci:4.present = "TRUE"
+usb_xhci:4.deviceType = "hid"
+usb_xhci:4.port = "4"
+usb_xhci:4.parent = "-1"
+svga.guestBackedPrimaryAware = "TRUE"
+guestInfo.detailed.data = "architecture='X86' bitness='64' distroName='Ubuntu 22.04.2 LTS' distroVersion='22.04' familyName='Linux' kernelVersion='5.19.0-41-generic' prettyName='Ubuntu 22.04.2 LTS'"

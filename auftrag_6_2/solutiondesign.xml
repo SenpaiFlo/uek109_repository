@@ -1,0 +1,105 @@
+<mxfile host="app.diagrams.net" modified="2023-05-22T07:35:13.089Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="Z0vij-xU9-8vjfNC5YlO" version="21.3.2" type="device">
+  <diagram id="Kz_IuuWu7yEZdWVlm8IO" name="Seite-1">
+    <mxGraphModel dx="1687" dy="936" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="O5zB8EkjXTcPczV390bd-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="230" width="1000" height="780" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-6" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="130" y="290" width="340" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-22" value="" style="group" vertex="1" connectable="0" parent="O5zB8EkjXTcPczV390bd-6">
+          <mxGeometry width="340" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="O5zB8EkjXTcPczV390bd-22">
+          <mxGeometry width="340" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-3" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Deployment&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="O5zB8EkjXTcPczV390bd-22">
+          <mxGeometry x="140" y="20" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-4" value="&lt;b&gt;webapp-deployment&lt;br&gt;&lt;/b&gt;labels:&lt;br&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;app: webapp&lt;br&gt;Containers:&lt;br&gt;name: webapp&lt;br&gt;image:&amp;nbsp;nanajanashia/k8s-demo-app:v1.0&lt;br&gt;Container-port: 3000" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="O5zB8EkjXTcPczV390bd-22">
+          <mxGeometry x="20" y="70" width="140" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-5" value="&lt;b&gt;mongo-deployment&lt;br&gt;&lt;/b&gt;labels:&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;app: mongo&lt;br&gt;Containers:&lt;br&gt;name: mongodb&lt;br&gt;image: mongo:5.0&lt;br&gt;Container-port: 27017" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="O5zB8EkjXTcPczV390bd-22">
+          <mxGeometry x="200" y="70" width="120" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-12" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="130" y="640" width="340" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="O5zB8EkjXTcPczV390bd-12">
+          <mxGeometry width="340" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-8" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Deployment-Services&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="O5zB8EkjXTcPczV390bd-12">
+          <mxGeometry x="94.44444444444444" y="20" width="151.11111111111111" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-9" value="&lt;b&gt;webapp&lt;br&gt;&lt;/b&gt;&lt;div&gt;apiVersion: v1&lt;/div&gt;&lt;div&gt;kind: Service&lt;/div&gt;&lt;div&gt;metadata:&lt;/div&gt;&lt;div&gt;&amp;nbsp; name: webapp-service&lt;/div&gt;&lt;div&gt;spec:&lt;/div&gt;&lt;div&gt;&amp;nbsp; type: NodePort&lt;/div&gt;&lt;div&gt;&amp;nbsp; selector:&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; app: webapp&lt;/div&gt;&lt;div&gt;&amp;nbsp; ports:&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; - protocol: TCP&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; port: 3000&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; targetPort: 3000&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; nodePort: 30100&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="O5zB8EkjXTcPczV390bd-12">
+          <mxGeometry x="18.89" y="70" width="141.11" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-10" value="&lt;b&gt;mongo&lt;/b&gt;&lt;br&gt;&lt;div&gt;apiVersion: v1&lt;/div&gt;&lt;div&gt;kind: Service&lt;/div&gt;&lt;div&gt;metadata:&lt;/div&gt;&lt;div&gt;&amp;nbsp; name: mongo-service&lt;/div&gt;&lt;div&gt;spec:&lt;/div&gt;&lt;div&gt;&amp;nbsp; selector:&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; app: mongo&lt;/div&gt;&lt;div&gt;&amp;nbsp; ports:&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; - protocol: TCP&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; port: 27017&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; targetPort: 27017&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="O5zB8EkjXTcPczV390bd-12">
+          <mxGeometry x="188.89" y="70" width="141.11" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-19" value="&lt;font style=&quot;font-size: 26px;&quot;&gt;&lt;b&gt;Kubernetes&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="540" y="250" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-20" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="620" y="640" width="340" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-15" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="O5zB8EkjXTcPczV390bd-20">
+          <mxGeometry width="340" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-17" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;ConfigMap&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="O5zB8EkjXTcPczV390bd-20">
+          <mxGeometry x="141.66666666666666" y="21.379310344827584" width="56.666666666666664" height="32.068965517241374" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-18" value="&lt;b&gt;mongo-config&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;&quot;&gt;apiVersion: v1&lt;/div&gt;&lt;div style=&quot;&quot;&gt;kind: ConfigMap&lt;/div&gt;&lt;div style=&quot;&quot;&gt;metadata:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; name: mongo-config&lt;/div&gt;&lt;div style=&quot;&quot;&gt;data:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; mongo-url: mongo-service&lt;/div&gt;&lt;div style=&quot;font-weight: bold;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="O5zB8EkjXTcPczV390bd-20">
+          <mxGeometry x="18.88888888888889" y="74.82758620689654" width="132.22222222222223" height="149.65517241379308" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-21" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="620" y="290" width="340" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-11" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="O5zB8EkjXTcPczV390bd-21">
+          <mxGeometry width="340" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-13" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Secret&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="O5zB8EkjXTcPczV390bd-21">
+          <mxGeometry x="140" y="20.689655172413794" width="60" height="31.03448275862069" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-14" value="&lt;b&gt;mongo-secret&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;&quot;&gt;apiVersion: v1&lt;/div&gt;&lt;div style=&quot;&quot;&gt;kind: Secret&lt;/div&gt;&lt;div style=&quot;&quot;&gt;metadata:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; name: mongo-secret&lt;/div&gt;&lt;div style=&quot;&quot;&gt;type: Opaque&lt;/div&gt;&lt;div style=&quot;&quot;&gt;data:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; mongo-user: bW9uZ291c2Vy&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; mongo-password: bW9uZ29wYXNzd29yZA==&lt;/div&gt;&lt;div style=&quot;font-weight: bold;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="O5zB8EkjXTcPczV390bd-21">
+          <mxGeometry x="20" y="62.06896551724138" width="170" height="186.20689655172416" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-24" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="O5zB8EkjXTcPczV390bd-4" target="O5zB8EkjXTcPczV390bd-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="580" as="sourcePoint" />
+            <mxPoint x="280" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-25" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="O5zB8EkjXTcPczV390bd-5" target="O5zB8EkjXTcPczV390bd-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="381" y="500" as="sourcePoint" />
+            <mxPoint x="380" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.006;entryY=0.392;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="O5zB8EkjXTcPczV390bd-5" target="O5zB8EkjXTcPczV390bd-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="O5zB8EkjXTcPczV390bd-4" target="O5zB8EkjXTcPczV390bd-18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="610" />
+              <mxPoint x="705" y="610" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O5zB8EkjXTcPczV390bd-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="O5zB8EkjXTcPczV390bd-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="520" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="220" y="520" />
+              <mxPoint x="640" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

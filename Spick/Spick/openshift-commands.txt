@@ -1,0 +1,8 @@
+[username]: karmakun04
+[token]: sha256~z18YjDcFPoiD0swz8xAGiaU0_0u96YeUknzI-5pX3VQ
+[cluster_name]: api.sandbox-m2.ll9k.p1.openshiftapps.com:6443
+[context]: karmakun04-dev/api.sandbox-m2.ll9k.p1.openshiftapps.com:6443/karmakun04
+[api_server_url]: https://api.sandbox-m2.ll9k.p1.openshiftapps.com:6443
+
+
+http://quotes-karmakun04-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/quotes/random

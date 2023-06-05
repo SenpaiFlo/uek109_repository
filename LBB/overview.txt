@@ -1,0 +1,42 @@
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/counter-backend-666f8cb59b-msvwn    1/1     Running   0          9m23s
+pod/counter-database-7566dfc684-mm7w7   1/1     Running   0          5h58m
+pod/counter-frontend-6bb6586f4f-v5kwh   1/1     Running   0          2m27s
+pod/counter-frontend-6bb6586f4f-x7q5z   1/1     Running   0          9m14s
+
+NAME                                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                               AGE
+service/counter-backend                     NodePort    172.30.4.82      <none>        8080:31457/TCP                        9m24s
+service/counter-database                    NodePort    172.30.154.101   <none>        5432:32221/TCP                        5h36m
+service/counter-frontend                    NodePort    172.30.49.36     <none>        3000:30342/TCP                        9m15s
+service/modelmesh-serving                   ClusterIP   None             <none>        8033/TCP,8008/TCP,8443/TCP,2112/TCP   8d
+service/workspaceab55510e39454863-service   ClusterIP   172.30.34.178    <none>        4444/TCP                              7d6h
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/counter-backend    1/1     1            1           9m24s
+deployment.apps/counter-database   1/1     1            1           5h58m
+deployment.apps/counter-frontend   2/2     2            2           9m15s
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/counter-backend-666f8cb59b    1         1         1       9m24s
+replicaset.apps/counter-database-7566dfc684   1         1         1       5h58m
+replicaset.apps/counter-frontend-6bb6586f4f   2         2         2       9m15s
+
+NAME                                                   REFERENCE                     TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/counter-backend    Deployment/counter-frontend   0%/50%    2         4         2          55m
+horizontalpodautoscaler.autoscaling/counter-frontend   Deployment/counter-frontend   0%/50%    2         4         2          40m
+
+NAME                                                   TYPE     FROM                                                 LATEST
+buildconfig.build.openshift.io/server-001-flo-qqljef   Source   Git                                                  2
+buildconfig.build.openshift.io/webserver               Source   Git@git@github.com:SenpaiFlo/uek109_repository.git   2
+
+NAME                                               TYPE     FROM                                                 STATUS                       STARTED      DURATION
+build.build.openshift.io/webserver-2               Source   Git@git@github.com:SenpaiFlo/uek109_repository.git   Failed (FetchSourceFailed)   8 days ago   4s
+build.build.openshift.io/server-001-flo-qqljef-2   Source   Git@9e825b3                                          Complete                     8 days ago   30s
+
+NAME                                                   IMAGE REPOSITORY                                                                                                   TAGS     UPDATED
+imagestream.image.openshift.io/server-001-flo-qqljef   default-route-openshift-image-registry.apps.sandbox-m2.ll9k.p1.openshiftapps.com/flo04-dev/server-001-flo-qqljef   latest   8 days ago
+imagestream.image.openshift.io/webserver               default-route-openshift-image-registry.apps.sandbox-m2.ll9k.p1.openshiftapps.com/flo04-dev/webserver                        
+
+NAME                                        HOST/PORT                                                              PATH   SERVICES           PORT   TERMINATION     WILDCARD
+route.route.openshift.io/counter-backend    counter-backend-flo04-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com           counter-backend    8080   edge/Redirect   None
+route.route.openshift.io/counter-frontend   counter-frontend-flo04-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com          counter-frontend   3000   edge/Redirect   None

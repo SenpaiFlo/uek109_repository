@@ -1,0 +1,1983 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/network-status: |-
+        [{
+            "name": "openshift-sdn",
+            "interface": "eth0",
+            "ips": [
+                "10.128.13.176"
+            ],
+            "default": true,
+            "dns": {}
+        }]
+      k8s.v1.cni.cncf.io/networks-status: |-
+        [{
+            "name": "openshift-sdn",
+            "interface": "eth0",
+            "ips": [
+                "10.128.13.176"
+            ],
+            "default": true,
+            "dns": {}
+        }]
+      kubernetes.io/limit-ranger: 'LimitRanger plugin set: cpu, memory request for
+        container counter-backend; cpu, memory limit for container counter-backend'
+      openshift.io/scc: restricted-v2
+      seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    creationTimestamp: "2023-05-30T14:17:35Z"
+    generateName: counter-backend-666f8cb59b-
+    labels:
+      app: counter-backend
+      pod-template-hash: 666f8cb59b
+    name: counter-backend-666f8cb59b-msvwn
+    namespace: flo04-dev
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: counter-backend-666f8cb59b
+      uid: 36ce5a20-89bf-4b11-b43e-fb73dc278038
+    resourceVersion: "2530708035"
+    uid: 9f91ec97-310b-47d4-a3a4-60e51f51940e
+  spec:
+    containers:
+    - env:
+      - name: DB_USER
+        valueFrom:
+          secretKeyRef:
+            key: database-user
+            name: counter-database
+      - name: DB_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            key: database-password
+            name: counter-database
+      - name: DB_NAME
+        valueFrom:
+          secretKeyRef:
+            key: database-name
+            name: counter-database
+      - name: DB_HOST
+        valueFrom:
+          configMapKeyRef:
+            key: database-host
+            name: counter-config
+      - name: passphrase
+        valueFrom:
+          secretKeyRef:
+            key: passphrase
+            name: counter-test-secret
+      - name: npm_config_cache
+        value: ./.npm-cache
+      - name: NODE_ENV
+        value: production
+      image: ghcr.io/senpaiflo/counter-backend:v1
+      imagePullPolicy: Always
+      name: counter-backend
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 1000Mi
+        requests:
+          cpu: 10m
+          memory: 64Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        runAsNonRoot: true
+        runAsUser: 1022450000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-rjf8q
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: default-dockercfg-kf45l
+    nodeName: ip-10-0-237-6.us-east-2.compute.internal
+    preemptionPolicy: PreemptLowerPriority
+    priority: -3
+    priorityClassName: sandbox-users-pods
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1022450000
+      seLinuxOptions:
+        level: s0:c150,c50
+      seccompProfile:
+        type: RuntimeDefault
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: kube-api-access-rjf8q
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T14:17:35Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T14:17:38Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T14:17:38Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T14:17:35Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://e44415fcc2f5f4032834ec48aaaea2f93c80d04f20c2b04e6f0be092eb0f6a9a
+      image: ghcr.io/senpaiflo/counter-backend:v1
+      imageID: ghcr.io/senpaiflo/counter-backend@sha256:9888d6971c9217b9b49f094cd83c7b91ec40d692435e2ed8cb97b27e4b06e8d1
+      lastState: {}
+      name: counter-backend
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2023-05-30T14:17:38Z"
+    hostIP: 10.0.237.6
+    phase: Running
+    podIP: 10.128.13.176
+    podIPs:
+    - ip: 10.128.13.176
+    qosClass: Burstable
+    startTime: "2023-05-30T14:17:35Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/network-status: |-
+        [{
+            "name": "openshift-sdn",
+            "interface": "eth0",
+            "ips": [
+                "10.129.11.17"
+            ],
+            "default": true,
+            "dns": {}
+        }]
+      k8s.v1.cni.cncf.io/networks-status: |-
+        [{
+            "name": "openshift-sdn",
+            "interface": "eth0",
+            "ips": [
+                "10.129.11.17"
+            ],
+            "default": true,
+            "dns": {}
+        }]
+      kubernetes.io/limit-ranger: 'LimitRanger plugin set: cpu, memory request for
+        container counter-database; cpu, memory limit for container counter-database'
+      openshift.io/scc: restricted-v2
+      seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    creationTimestamp: "2023-05-30T08:28:08Z"
+    generateName: counter-database-7566dfc684-
+    labels:
+      app: counter-database
+      pod-template-hash: 7566dfc684
+    name: counter-database-7566dfc684-mm7w7
+    namespace: flo04-dev
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: counter-database-7566dfc684
+      uid: 3d74cffe-30d6-4b1d-bb47-dd8447dff76b
+    resourceVersion: "2529706439"
+    uid: 6676d2bd-12cb-45ba-96de-1d06fcc7b177
+  spec:
+    containers:
+    - env:
+      - name: POSTGRESQL_USER
+        valueFrom:
+          secretKeyRef:
+            key: database-user
+            name: counter-database
+      - name: POSTGRESQL_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            key: database-password
+            name: counter-database
+      - name: POSTGRESQL_DATABASE
+        valueFrom:
+          secretKeyRef:
+            key: database-name
+            name: counter-database
+      image: quay.io/centos7/postgresql-10-centos7:20221109
+      imagePullPolicy: Always
+      name: counter-database
+      ports:
+      - containerPort: 5432
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 1000Mi
+        requests:
+          cpu: 10m
+          memory: 64Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        runAsNonRoot: true
+        runAsUser: 1011480000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-km4cl
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: default-dockercfg-kf45l
+    nodeName: ip-10-0-158-190.us-east-2.compute.internal
+    preemptionPolicy: PreemptLowerPriority
+    priority: -3
+    priorityClassName: sandbox-users-pods
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1011480000
+      seLinuxOptions:
+        level: s0:c107,c69
+      seccompProfile:
+        type: RuntimeDefault
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: kube-api-access-km4cl
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T08:28:08Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T08:29:48Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T08:29:48Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T08:28:08Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://de1cd02b400a36164a8a48b3989ea9193e2a00251bd3d42e3776266e7d279655
+      image: quay.io/centos7/postgresql-10-centos7:20221109
+      imageID: quay.io/centos7/postgresql-10-centos7@sha256:e4d23ff04ed64531e36064a67903be84ca67a3ee673d099767783fac13d12994
+      lastState: {}
+      name: counter-database
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2023-05-30T08:29:48Z"
+    hostIP: 10.0.158.190
+    phase: Running
+    podIP: 10.129.11.17
+    podIPs:
+    - ip: 10.129.11.17
+    qosClass: Burstable
+    startTime: "2023-05-30T08:28:08Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/network-status: |-
+        [{
+            "name": "openshift-sdn",
+            "interface": "eth0",
+            "ips": [
+                "10.128.5.187"
+            ],
+            "default": true,
+            "dns": {}
+        }]
+      k8s.v1.cni.cncf.io/networks-status: |-
+        [{
+            "name": "openshift-sdn",
+            "interface": "eth0",
+            "ips": [
+                "10.128.5.187"
+            ],
+            "default": true,
+            "dns": {}
+        }]
+      kubernetes.io/limit-ranger: 'LimitRanger plugin set: cpu, memory request for
+        container counter-frontend; cpu, memory limit for container counter-frontend'
+      openshift.io/scc: restricted-v2
+      seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    creationTimestamp: "2023-05-30T14:24:31Z"
+    generateName: counter-frontend-6bb6586f4f-
+    labels:
+      app: counter-frontend
+      pod-template-hash: 6bb6586f4f
+    name: counter-frontend-6bb6586f4f-v5kwh
+    namespace: flo04-dev
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: counter-frontend-6bb6586f4f
+      uid: 6d8bb5cb-474b-4396-83eb-18dcd17cc242
+    resourceVersion: "2530730892"
+    uid: 6fa438fb-a6ea-4b05-b602-8bb184ae4eb5
+  spec:
+    containers:
+    - env:
+      - name: BACKEND_URL
+        valueFrom:
+          configMapKeyRef:
+            key: BACKEND_URL
+            name: counter-config
+      - name: npm_config_cache
+        value: ./.npm-cache
+      - name: NODE_ENV
+        value: production
+      image: ghcr.io/senpaiflo/counter-frontend:v1
+      imagePullPolicy: Always
+      name: counter-frontend
+      ports:
+      - containerPort: 3000
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 1000Mi
+        requests:
+          cpu: 10m
+          memory: 64Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        runAsNonRoot: true
+        runAsUser: 1022450000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-jvghs
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: default-dockercfg-kf45l
+    nodeName: ip-10-0-147-78.us-east-2.compute.internal
+    preemptionPolicy: PreemptLowerPriority
+    priority: -3
+    priorityClassName: sandbox-users-pods
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1022450000
+      seLinuxOptions:
+        level: s0:c150,c50
+      seccompProfile:
+        type: RuntimeDefault
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: kube-api-access-jvghs
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T14:24:31Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T14:24:35Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T14:24:35Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T14:24:31Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://872e84f78c52d30f27e80949d2bb5ec1a2dbabf4d983e7ab042ff05c0743a94d
+      image: ghcr.io/senpaiflo/counter-frontend:v1
+      imageID: ghcr.io/senpaiflo/counter-frontend@sha256:dee4b4153543189b10c04c348b6d8b60fe3cc5d766c10b346a16a358941f2854
+      lastState: {}
+      name: counter-frontend
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2023-05-30T14:24:34Z"
+    hostIP: 10.0.147.78
+    phase: Running
+    podIP: 10.128.5.187
+    podIPs:
+    - ip: 10.128.5.187
+    qosClass: Burstable
+    startTime: "2023-05-30T14:24:31Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/network-status: |-
+        [{
+            "name": "openshift-sdn",
+            "interface": "eth0",
+            "ips": [
+                "10.128.13.177"
+            ],
+            "default": true,
+            "dns": {}
+        }]
+      k8s.v1.cni.cncf.io/networks-status: |-
+        [{
+            "name": "openshift-sdn",
+            "interface": "eth0",
+            "ips": [
+                "10.128.13.177"
+            ],
+            "default": true,
+            "dns": {}
+        }]
+      kubernetes.io/limit-ranger: 'LimitRanger plugin set: cpu, memory request for
+        container counter-frontend; cpu, memory limit for container counter-frontend'
+      openshift.io/scc: restricted-v2
+      seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    creationTimestamp: "2023-05-30T14:17:44Z"
+    generateName: counter-frontend-6bb6586f4f-
+    labels:
+      app: counter-frontend
+      pod-template-hash: 6bb6586f4f
+    name: counter-frontend-6bb6586f4f-x7q5z
+    namespace: flo04-dev
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: counter-frontend-6bb6586f4f
+      uid: 6d8bb5cb-474b-4396-83eb-18dcd17cc242
+    resourceVersion: "2530708642"
+    uid: ff8cce89-e12f-4c73-8b30-323d099e4065
+  spec:
+    containers:
+    - env:
+      - name: BACKEND_URL
+        valueFrom:
+          configMapKeyRef:
+            key: BACKEND_URL
+            name: counter-config
+      - name: npm_config_cache
+        value: ./.npm-cache
+      - name: NODE_ENV
+        value: production
+      image: ghcr.io/senpaiflo/counter-frontend:v1
+      imagePullPolicy: Always
+      name: counter-frontend
+      ports:
+      - containerPort: 3000
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 1000Mi
+        requests:
+          cpu: 10m
+          memory: 64Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        runAsNonRoot: true
+        runAsUser: 1022450000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-ww5bc
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: default-dockercfg-kf45l
+    nodeName: ip-10-0-237-6.us-east-2.compute.internal
+    preemptionPolicy: PreemptLowerPriority
+    priority: -3
+    priorityClassName: sandbox-users-pods
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1022450000
+      seLinuxOptions:
+        level: s0:c150,c50
+      seccompProfile:
+        type: RuntimeDefault
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: kube-api-access-ww5bc
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T14:17:44Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T14:17:48Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T14:17:48Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2023-05-30T14:17:44Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://7e8c012e91fd53622cbb4a869c56f4e39c177ecf29196c204c50f0023d3ebaf5
+      image: ghcr.io/senpaiflo/counter-frontend:v1
+      imageID: ghcr.io/senpaiflo/counter-frontend@sha256:dee4b4153543189b10c04c348b6d8b60fe3cc5d766c10b346a16a358941f2854
+      lastState: {}
+      name: counter-frontend
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2023-05-30T14:17:48Z"
+    hostIP: 10.0.237.6
+    phase: Running
+    podIP: 10.128.13.177
+    podIPs:
+    - ip: 10.128.13.177
+    qosClass: Burstable
+    startTime: "2023-05-30T14:17:44Z"
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"counter-backend"},"name":"counter-backend","namespace":"flo04-dev"},"spec":{"ports":[{"port":8080,"protocol":"TCP","targetPort":8080}],"selector":{"app":"counter-backend"},"type":"NodePort"}}
+    creationTimestamp: "2023-05-30T14:17:35Z"
+    labels:
+      app: counter-backend
+    name: counter-backend
+    namespace: flo04-dev
+    resourceVersion: "2530715654"
+    uid: 10d321b2-ec25-42dc-93bb-696093d5c388
+  spec:
+    clusterIP: 172.30.4.82
+    clusterIPs:
+    - 172.30.4.82
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - nodePort: 31457
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: counter-backend
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"counter-database"},"name":"counter-database","namespace":"flo04-dev"},"spec":{"ports":[{"name":"5432-tcp","port":5432,"protocol":"TCP","targetPort":5432}],"selector":{"app":"counter-database"},"type":"NodePort"}}
+    creationTimestamp: "2023-05-30T08:50:51Z"
+    labels:
+      app: counter-database
+    name: counter-database
+    namespace: flo04-dev
+    resourceVersion: "2529808446"
+    uid: 52eec672-bd85-41f2-b8b1-b2fde0517811
+  spec:
+    clusterIP: 172.30.154.101
+    clusterIPs:
+    - 172.30.154.101
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: 5432-tcp
+      nodePort: 32221
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+    selector:
+      app: counter-database
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"counter-frontend"},"name":"counter-frontend","namespace":"flo04-dev"},"spec":{"ports":[{"port":3000,"protocol":"TCP","targetPort":3000}],"selector":{"app":"counter-frontend"},"type":"NodePort"}}
+    creationTimestamp: "2023-05-30T14:17:44Z"
+    labels:
+      app: counter-frontend
+    name: counter-frontend
+    namespace: flo04-dev
+    resourceVersion: "2530716780"
+    uid: 60d1683d-6a47-46c7-986b-5343e5f8e493
+  spec:
+    clusterIP: 172.30.49.36
+    clusterIPs:
+    - 172.30.49.36
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - nodePort: 30342
+      port: 3000
+      protocol: TCP
+      targetPort: 3000
+    selector:
+      app: counter-frontend
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      service.alpha.openshift.io/serving-cert-secret-name: model-serving-proxy-tls
+      service.alpha.openshift.io/serving-cert-signed-by: openshift-service-serving-signer@1612378065
+      service.beta.openshift.io/serving-cert-signed-by: openshift-service-serving-signer@1612378065
+    creationTimestamp: "2023-05-22T11:35:14Z"
+    labels:
+      app.kubernetes.io/instance: modelmesh-controller
+      app.kubernetes.io/managed-by: modelmesh-controller
+      app.kubernetes.io/name: modelmesh-controller
+      modelmesh-service: modelmesh-serving
+    name: modelmesh-serving
+    namespace: flo04-dev
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Namespace
+      name: flo04-dev
+      uid: 525faaab-6d5e-4203-b9e1-402b614729f2
+    resourceVersion: "2496304919"
+    uid: 565eefae-9c34-45af-9498-7721f9d79c60
+  spec:
+    clusterIP: None
+    clusterIPs:
+    - None
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: grpc
+      port: 8033
+      protocol: TCP
+      targetPort: grpc
+    - name: http
+      port: 8008
+      protocol: TCP
+      targetPort: http
+    - name: https
+      port: 8443
+      protocol: TCP
+      targetPort: https
+    - name: prometheus
+      port: 2112
+      protocol: TCP
+      targetPort: prometheus
+    selector:
+      modelmesh-service: modelmesh-serving
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      controller.devfile.io/restricted-access: "true"
+      service.alpha.openshift.io/serving-cert-signed-by: openshift-service-serving-signer@1612378065
+      service.beta.openshift.io/serving-cert-secret-name: workspaceab55510e39454863-service
+      service.beta.openshift.io/serving-cert-signed-by: openshift-service-serving-signer@1612378065
+    creationTimestamp: "2023-05-23T08:10:44Z"
+    labels:
+      controller.devfile.io/devworkspace_id: workspaceab55510e39454863
+    name: workspaceab55510e39454863-service
+    namespace: flo04-dev
+    ownerReferences:
+    - apiVersion: controller.devfile.io/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DevWorkspaceRouting
+      name: routing-workspaceab55510e39454863
+      uid: ceb899d3-5663-4515-8305-f7a89bb98234
+    resourceVersion: "2500096226"
+    uid: 7bd1bad5-4e18-483d-9499-a277109ee0e1
+  spec:
+    clusterIP: 172.30.34.178
+    clusterIPs:
+    - 172.30.34.178
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: exec
+      port: 4444
+      protocol: TCP
+      targetPort: 4444
+    selector:
+      controller.devfile.io/devworkspace_id: workspaceab55510e39454863
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"counter-backend"},"name":"counter-backend","namespace":"flo04-dev"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"counter-backend"}},"template":{"metadata":{"labels":{"app":"counter-backend"}},"spec":{"containers":[{"env":[{"name":"DB_USER","valueFrom":{"secretKeyRef":{"key":"database-user","name":"counter-database"}}},{"name":"DB_PASSWORD","valueFrom":{"secretKeyRef":{"key":"database-password","name":"counter-database"}}},{"name":"DB_NAME","valueFrom":{"secretKeyRef":{"key":"database-name","name":"counter-database"}}},{"name":"DB_HOST","valueFrom":{"configMapKeyRef":{"key":"database-host","name":"counter-config"}}},{"name":"passphrase","valueFrom":{"secretKeyRef":{"key":"passphrase","name":"counter-test-secret"}}},{"name":"npm_config_cache","value":"./.npm-cache"},{"name":"NODE_ENV","value":"production"}],"image":"ghcr.io/senpaiflo/counter-backend:v1","imagePullPolicy":"Always","name":"counter-backend","ports":[{"containerPort":8080}]}]}}}}
+    creationTimestamp: "2023-05-30T14:17:35Z"
+    generation: 2
+    labels:
+      app: counter-backend
+    name: counter-backend
+    namespace: flo04-dev
+    resourceVersion: "2530715636"
+    uid: b8f99deb-3d8e-4cf7-bd8e-09a6ad57fdf2
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: counter-backend
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: counter-backend
+      spec:
+        containers:
+        - env:
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                key: database-user
+                name: counter-database
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: database-password
+                name: counter-database
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                key: database-name
+                name: counter-database
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                key: database-host
+                name: counter-config
+          - name: passphrase
+            valueFrom:
+              secretKeyRef:
+                key: passphrase
+                name: counter-test-secret
+          - name: npm_config_cache
+            value: ./.npm-cache
+          - name: NODE_ENV
+            value: production
+          image: ghcr.io/senpaiflo/counter-backend:v1
+          imagePullPolicy: Always
+          name: counter-backend
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2023-05-30T14:17:38Z"
+      lastUpdateTime: "2023-05-30T14:17:38Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2023-05-30T14:17:35Z"
+      lastUpdateTime: "2023-05-30T14:17:38Z"
+      message: ReplicaSet "counter-backend-666f8cb59b" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"counter-database"},"name":"counter-database","namespace":"flo04-dev"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"counter-database"}},"template":{"metadata":{"labels":{"app":"counter-database"}},"spec":{"containers":[{"env":[{"name":"POSTGRESQL_USER","valueFrom":{"secretKeyRef":{"key":"database-user","name":"counter-database"}}},{"name":"POSTGRESQL_PASSWORD","valueFrom":{"secretKeyRef":{"key":"database-password","name":"counter-database"}}},{"name":"POSTGRESQL_DATABASE","valueFrom":{"secretKeyRef":{"key":"database-name","name":"counter-database"}}}],"image":"quay.io/centos7/postgresql-10-centos7:20221109","imagePullPolicy":"Always","name":"counter-database","ports":[{"containerPort":5432}]}]}}}}
+    creationTimestamp: "2023-05-30T08:28:08Z"
+    generation: 2
+    labels:
+      app: counter-database
+    name: counter-database
+    namespace: flo04-dev
+    resourceVersion: "2529808185"
+    uid: e5330a37-0ce2-48e3-b597-4c4a4ba98379
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: counter-database
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: counter-database
+      spec:
+        containers:
+        - env:
+          - name: POSTGRESQL_USER
+            valueFrom:
+              secretKeyRef:
+                key: database-user
+                name: counter-database
+          - name: POSTGRESQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: database-password
+                name: counter-database
+          - name: POSTGRESQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                key: database-name
+                name: counter-database
+          image: quay.io/centos7/postgresql-10-centos7:20221109
+          imagePullPolicy: Always
+          name: counter-database
+          ports:
+          - containerPort: 5432
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2023-05-30T08:29:48Z"
+      lastUpdateTime: "2023-05-30T08:29:48Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2023-05-30T08:28:08Z"
+      lastUpdateTime: "2023-05-30T08:29:48Z"
+      message: ReplicaSet "counter-database-7566dfc684" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"counter-frontend"},"name":"counter-frontend","namespace":"flo04-dev"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"counter-frontend"}},"template":{"metadata":{"labels":{"app":"counter-frontend"}},"spec":{"containers":[{"env":[{"name":"BACKEND_URL","valueFrom":{"configMapKeyRef":{"key":"BACKEND_URL","name":"counter-config"}}},{"name":"npm_config_cache","value":"./.npm-cache"},{"name":"NODE_ENV","value":"production"}],"image":"ghcr.io/senpaiflo/counter-frontend:v1","imagePullPolicy":"Always","name":"counter-frontend","ports":[{"containerPort":3000}]}]}}}}
+    creationTimestamp: "2023-05-30T14:17:44Z"
+    generation: 6
+    labels:
+      app: counter-frontend
+    name: counter-frontend
+    namespace: flo04-dev
+    resourceVersion: "2530730896"
+    uid: ecd9741c-a112-4200-8337-ce3f94ceebda
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: counter-frontend
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: counter-frontend
+      spec:
+        containers:
+        - env:
+          - name: BACKEND_URL
+            valueFrom:
+              configMapKeyRef:
+                key: BACKEND_URL
+                name: counter-config
+          - name: npm_config_cache
+            value: ./.npm-cache
+          - name: NODE_ENV
+            value: production
+          image: ghcr.io/senpaiflo/counter-frontend:v1
+          imagePullPolicy: Always
+          name: counter-frontend
+          ports:
+          - containerPort: 3000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 2
+    conditions:
+    - lastTransitionTime: "2023-05-30T14:17:44Z"
+      lastUpdateTime: "2023-05-30T14:17:49Z"
+      message: ReplicaSet "counter-frontend-6bb6586f4f" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2023-05-30T14:24:35Z"
+      lastUpdateTime: "2023-05-30T14:24:35Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 6
+    readyReplicas: 2
+    replicas: 2
+    updatedReplicas: 2
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2023-05-30T14:17:35Z"
+    generation: 1
+    labels:
+      app: counter-backend
+      pod-template-hash: 666f8cb59b
+    name: counter-backend-666f8cb59b
+    namespace: flo04-dev
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: counter-backend
+      uid: b8f99deb-3d8e-4cf7-bd8e-09a6ad57fdf2
+    resourceVersion: "2530708038"
+    uid: 36ce5a20-89bf-4b11-b43e-fb73dc278038
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: counter-backend
+        pod-template-hash: 666f8cb59b
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: counter-backend
+          pod-template-hash: 666f8cb59b
+      spec:
+        containers:
+        - env:
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                key: database-user
+                name: counter-database
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: database-password
+                name: counter-database
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                key: database-name
+                name: counter-database
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                key: database-host
+                name: counter-config
+          - name: passphrase
+            valueFrom:
+              secretKeyRef:
+                key: passphrase
+                name: counter-test-secret
+          - name: npm_config_cache
+            value: ./.npm-cache
+          - name: NODE_ENV
+            value: production
+          image: ghcr.io/senpaiflo/counter-backend:v1
+          imagePullPolicy: Always
+          name: counter-backend
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2023-05-30T08:28:08Z"
+    generation: 1
+    labels:
+      app: counter-database
+      pod-template-hash: 7566dfc684
+    name: counter-database-7566dfc684
+    namespace: flo04-dev
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: counter-database
+      uid: e5330a37-0ce2-48e3-b597-4c4a4ba98379
+    resourceVersion: "2529706440"
+    uid: 3d74cffe-30d6-4b1d-bb47-dd8447dff76b
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: counter-database
+        pod-template-hash: 7566dfc684
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: counter-database
+          pod-template-hash: 7566dfc684
+      spec:
+        containers:
+        - env:
+          - name: POSTGRESQL_USER
+            valueFrom:
+              secretKeyRef:
+                key: database-user
+                name: counter-database
+          - name: POSTGRESQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: database-password
+                name: counter-database
+          - name: POSTGRESQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                key: database-name
+                name: counter-database
+          image: quay.io/centos7/postgresql-10-centos7:20221109
+          imagePullPolicy: Always
+          name: counter-database
+          ports:
+          - containerPort: 5432
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "2"
+      deployment.kubernetes.io/max-replicas: "3"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2023-05-30T14:17:44Z"
+    generation: 6
+    labels:
+      app: counter-frontend
+      pod-template-hash: 6bb6586f4f
+    name: counter-frontend-6bb6586f4f
+    namespace: flo04-dev
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: counter-frontend
+      uid: ecd9741c-a112-4200-8337-ce3f94ceebda
+    resourceVersion: "2530730895"
+    uid: 6d8bb5cb-474b-4396-83eb-18dcd17cc242
+  spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        app: counter-frontend
+        pod-template-hash: 6bb6586f4f
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: counter-frontend
+          pod-template-hash: 6bb6586f4f
+      spec:
+        containers:
+        - env:
+          - name: BACKEND_URL
+            valueFrom:
+              configMapKeyRef:
+                key: BACKEND_URL
+                name: counter-config
+          - name: npm_config_cache
+            value: ./.npm-cache
+          - name: NODE_ENV
+            value: production
+          image: ghcr.io/senpaiflo/counter-frontend:v1
+          imagePullPolicy: Always
+          name: counter-frontend
+          ports:
+          - containerPort: 3000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 2
+    fullyLabeledReplicas: 2
+    observedGeneration: 6
+    readyReplicas: 2
+    replicas: 2
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    creationTimestamp: "2023-05-30T13:31:17Z"
+    name: counter-backend
+    namespace: flo04-dev
+    resourceVersion: "2530736090"
+    uid: 560dd041-28af-47fb-9a20-9ac3a7177c96
+  spec:
+    maxReplicas: 4
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 50
+          type: Utilization
+      type: Resource
+    minReplicas: 2
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: counter-frontend
+  status:
+    conditions:
+    - lastTransitionTime: "2023-05-30T14:17:49Z"
+      message: recent recommendations were higher than current one, applying the highest
+        recent recommendation
+      reason: ScaleDownStabilized
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2023-05-30T14:22:50Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2023-05-30T14:24:35Z"
+      message: the desired count is within the acceptable range
+      reason: DesiredWithinRange
+      status: "False"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: "0"
+        name: cpu
+      type: Resource
+    currentReplicas: 2
+    desiredReplicas: 2
+    lastScaleTime: "2023-05-30T14:01:18Z"
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    creationTimestamp: "2023-05-30T13:46:28Z"
+    name: counter-frontend
+    namespace: flo04-dev
+    resourceVersion: "2530735879"
+    uid: 4451dc19-87e3-4cd4-91c4-82a847feed09
+  spec:
+    maxReplicas: 4
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 50
+          type: Utilization
+      type: Resource
+    minReplicas: 2
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: counter-frontend
+  status:
+    conditions:
+    - lastTransitionTime: "2023-05-30T14:17:45Z"
+      message: recent recommendations were higher than current one, applying the highest
+        recent recommendation
+      reason: ScaleDownStabilized
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2023-05-30T14:22:46Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2023-05-30T14:24:46Z"
+      message: the desired count is within the acceptable range
+      reason: DesiredWithinRange
+      status: "False"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: "0"
+        name: cpu
+      type: Resource
+    currentReplicas: 2
+    desiredReplicas: 2
+    lastScaleTime: "2023-05-30T14:24:31Z"
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      app.openshift.io/vcs-ref: ""
+      app.openshift.io/vcs-uri: https://github.com/SenpaiFlo/uek109_repository.git
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: "2023-05-22T11:47:01Z"
+    generation: 3
+    labels:
+      app: server-001-flo
+      app.kubernetes.io/component: server-001-flo
+      app.kubernetes.io/instance: server-001-flo
+      app.kubernetes.io/name: server-001-flo
+      app.kubernetes.io/part-of: Server-Flo
+      app.openshift.io/runtime: httpd
+      app.openshift.io/runtime-version: 2.4-el7
+    name: server-001-flo-qqljef
+    namespace: flo04-dev
+    resourceVersion: "2496343017"
+    uid: 6c906fe2-f5fc-4e2c-8ae7-1f664a2fbb2b
+  spec:
+    failedBuildsHistoryLimit: 5
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: server-001-flo-qqljef:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      contextDir: /
+      git:
+        uri: https://github.com/SenpaiFlo/uek109_repository.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: httpd:2.4-el7
+          namespace: openshift
+      type: Source
+    successfulBuildsHistoryLimit: 5
+    triggers:
+    - generic:
+        secretReference:
+          name: server-001-flo-generic-webhook-secret
+      type: Generic
+    - github:
+        secretReference:
+          name: server-001-flo-github-webhook-secret
+      type: GitHub
+    - imageChange: {}
+      type: ImageChange
+    - type: ConfigChange
+  status:
+    imageChangeTriggers:
+    - from:
+        name: httpd:2.4-el7
+        namespace: openshift
+      lastTriggerTime: null
+      lastTriggeredImageID: image-registry.openshift-image-registry.svc:5000/openshift/httpd@sha256:c3c6b791858cbb70f3aa2a1901563e759d6c822812c17913368885bf3c5532e6
+    lastVersion: 2
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      description: Defines how to build the application
+      template.alpha.openshift.io/wait-for-ready: "true"
+    creationTimestamp: "2023-05-22T11:41:08Z"
+    generation: 3
+    labels:
+      app: httpd-example
+      template: httpd-example
+      template.openshift.io/template-instance-owner: 578bcfcc-ae39-4e51-a991-b4a03e03e3ec
+    name: webserver
+    namespace: flo04-dev
+    resourceVersion: "2496326801"
+    uid: 35dde277-d4d7-4831-a34b-f0b15a5f3c2a
+  spec:
+    failedBuildsHistoryLimit: 5
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: webserver:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      git:
+        ref: git@github.com:SenpaiFlo/uek109_repository.git
+        uri: https://github.com/sclorg/httpd-ex.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: httpd:2.4-el8
+          namespace: openshift
+      type: Source
+    successfulBuildsHistoryLimit: 5
+    triggers:
+    - imageChange: {}
+      type: ImageChange
+    - type: ConfigChange
+    - github:
+        secret: guItV0eqsit6JKeMEwRd1xKdVO1u7mXrIVOYHqTq
+      type: GitHub
+    - generic:
+        secret: QWvQm1UHdmtK3k25jvKxfXCmb1O8sQpCfPX0mkV8
+      type: Generic
+  status:
+    imageChangeTriggers:
+    - from:
+        name: httpd:2.4-el8
+        namespace: openshift
+      lastTriggerTime: null
+      lastTriggeredImageID: image-registry.openshift-image-registry.svc:5000/openshift/httpd@sha256:62cfaa2a199641010aab4c4f3fba24cb4040729dd31420438380a4b791f69861
+    lastVersion: 2
+- apiVersion: build.openshift.io/v1
+  kind: Build
+  metadata:
+    annotations:
+      openshift.io/build-config.name: server-001-flo-qqljef
+      openshift.io/build.number: "2"
+      openshift.io/build.pod-name: server-001-flo-qqljef-2-build
+    creationTimestamp: "2023-05-22T11:47:18Z"
+    generation: 2
+    labels:
+      app: server-001-flo
+      app.kubernetes.io/component: server-001-flo
+      app.kubernetes.io/instance: server-001-flo
+      app.kubernetes.io/name: server-001-flo
+      app.kubernetes.io/part-of: Server-Flo
+      app.openshift.io/runtime: httpd
+      app.openshift.io/runtime-version: 2.4-el7
+      buildconfig: server-001-flo-qqljef
+      openshift.io/build-config.name: server-001-flo-qqljef
+      openshift.io/build.start-policy: Serial
+    name: server-001-flo-qqljef-2
+    namespace: flo04-dev
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: BuildConfig
+      name: server-001-flo-qqljef
+      uid: 6c906fe2-f5fc-4e2c-8ae7-1f664a2fbb2b
+    resourceVersion: "2496345629"
+    uid: ad453254-5e4e-4e16-be70-7b6788940f70
+  spec:
+    nodeSelector: null
+    output:
+      pushSecret:
+        name: builder-dockercfg-wlkvz
+      to:
+        kind: ImageStreamTag
+        name: server-001-flo-qqljef:latest
+    postCommit: {}
+    resources: {}
+    revision:
+      git:
+        author:
+          email: munoz.enrique2006@gmail.com
+          name: Kikem1z
+        commit: 9e825b389fc22cf71bae9467971b821e5b0c57f8
+        committer:
+          email: munoz.enrique2006@gmail.com
+          name: Kikem1z
+        message: Added git.html
+      type: Git
+    serviceAccount: builder
+    source:
+      contextDir: /
+      git:
+        uri: https://github.com/SenpaiFlo/uek109_repository.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: DockerImage
+          name: image-registry.openshift-image-registry.svc:5000/openshift/httpd@sha256:c3c6b791858cbb70f3aa2a1901563e759d6c822812c17913368885bf3c5532e6
+        pullSecret:
+          name: builder-dockercfg-wlkvz
+      type: Source
+    triggeredBy:
+    - message: Manually triggered
+  status:
+    completionTimestamp: "2023-05-22T11:48:03Z"
+    conditions:
+    - lastTransitionTime: "2023-05-22T11:47:33Z"
+      lastUpdateTime: "2023-05-22T11:47:33Z"
+      status: "False"
+      type: New
+    - lastTransitionTime: "2023-05-22T11:47:37Z"
+      lastUpdateTime: "2023-05-22T11:47:37Z"
+      status: "False"
+      type: Pending
+    - lastTransitionTime: "2023-05-22T11:48:03Z"
+      lastUpdateTime: "2023-05-22T11:48:03Z"
+      status: "False"
+      type: Running
+    - lastTransitionTime: "2023-05-22T11:48:03Z"
+      lastUpdateTime: "2023-05-22T11:48:03Z"
+      status: "True"
+      type: Complete
+    config:
+      kind: BuildConfig
+      name: server-001-flo-qqljef
+      namespace: flo04-dev
+    duration: 30000000000
+    output:
+      to:
+        imageDigest: sha256:2b4a89454fab5a6ded0a86bd80152e9332dc53d88d9ff14646fda64a879d2d8f
+    outputDockerImageReference: image-registry.openshift-image-registry.svc:5000/flo04-dev/server-001-flo-qqljef:latest
+    phase: Complete
+    stages:
+    - durationMilliseconds: 343
+      name: FetchInputs
+      startTime: "2023-05-22T11:47:36Z"
+      steps:
+      - durationMilliseconds: 343
+        name: FetchGitSource
+        startTime: "2023-05-22T11:47:36Z"
+    - durationMilliseconds: 16379
+      name: PullImages
+      startTime: "2023-05-22T11:47:38Z"
+      steps:
+      - durationMilliseconds: 16379
+        name: PullBaseImage
+        startTime: "2023-05-22T11:47:38Z"
+    - durationMilliseconds: 3881
+      name: Build
+      startTime: "2023-05-22T11:47:54Z"
+      steps:
+      - durationMilliseconds: 3881
+        name: DockerBuild
+        startTime: "2023-05-22T11:47:54Z"
+    - durationMilliseconds: 1945
+      name: PushImage
+      startTime: "2023-05-22T11:47:58Z"
+      steps:
+      - durationMilliseconds: 1945
+        name: PushImage
+        startTime: "2023-05-22T11:47:58Z"
+    startTimestamp: "2023-05-22T11:47:33Z"
+- apiVersion: build.openshift.io/v1
+  kind: Build
+  metadata:
+    annotations:
+      openshift.io/build-config.name: webserver
+      openshift.io/build.number: "2"
+      openshift.io/build.pod-name: webserver-2-build
+    creationTimestamp: "2023-05-22T11:42:08Z"
+    generation: 2
+    labels:
+      app: httpd-example
+      buildconfig: webserver
+      openshift.io/build-config.name: webserver
+      openshift.io/build.start-policy: Serial
+      template: httpd-example
+      template.openshift.io/template-instance-owner: 578bcfcc-ae39-4e51-a991-b4a03e03e3ec
+    name: webserver-2
+    namespace: flo04-dev
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: BuildConfig
+      name: webserver
+      uid: 35dde277-d4d7-4831-a34b-f0b15a5f3c2a
+    resourceVersion: "2496327106"
+    uid: 35259e20-e317-479d-8474-d8bff3f6ac29
+  spec:
+    nodeSelector: null
+    output:
+      pushSecret:
+        name: builder-dockercfg-wlkvz
+      to:
+        kind: ImageStreamTag
+        name: webserver:latest
+    postCommit: {}
+    resources: {}
+    serviceAccount: builder
+    source:
+      git:
+        ref: git@github.com:SenpaiFlo/uek109_repository.git
+        uri: https://github.com/sclorg/httpd-ex.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: DockerImage
+          name: image-registry.openshift-image-registry.svc:5000/openshift/httpd@sha256:62cfaa2a199641010aab4c4f3fba24cb4040729dd31420438380a4b791f69861
+        pullSecret:
+          name: builder-dockercfg-wlkvz
+      type: Source
+    triggeredBy:
+    - message: Manually triggered
+  status:
+    completionTimestamp: "2023-05-22T11:42:12Z"
+    conditions:
+    - lastTransitionTime: "2023-05-22T11:42:08Z"
+      lastUpdateTime: "2023-05-22T11:42:08Z"
+      status: "False"
+      type: New
+    - lastTransitionTime: "2023-05-22T11:42:11Z"
+      lastUpdateTime: "2023-05-22T11:42:11Z"
+      status: "False"
+      type: Pending
+    - lastTransitionTime: "2023-05-22T11:42:12Z"
+      lastUpdateTime: "2023-05-22T11:42:12Z"
+      status: "False"
+      type: Running
+    - lastTransitionTime: "2023-05-22T11:42:12Z"
+      lastUpdateTime: "2023-05-22T11:42:12Z"
+      message: Failed to fetch the input source.
+      reason: FetchSourceFailed
+      status: "True"
+      type: Failed
+    config:
+      kind: BuildConfig
+      name: webserver
+      namespace: flo04-dev
+    duration: 4000000000
+    logSnippet: |-
+      Cloning "https://github.com/sclorg/httpd-ex.git" ...
+      error: fatal: couldn't find remote ref git@github.com
+    message: Failed to fetch the input source.
+    output: {}
+    outputDockerImageReference: image-registry.openshift-image-registry.svc:5000/flo04-dev/webserver:latest
+    phase: Failed
+    reason: FetchSourceFailed
+    stages:
+    - durationMilliseconds: 268
+      name: FetchInputs
+      startTime: "2023-05-22T11:42:11Z"
+      steps:
+      - durationMilliseconds: 268
+        name: FetchGitSource
+        startTime: "2023-05-22T11:42:11Z"
+    startTimestamp: "2023-05-22T11:42:08Z"
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      app.openshift.io/vcs-ref: ""
+      app.openshift.io/vcs-uri: https://github.com/SenpaiFlo/uek109_repository.git
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: "2023-05-22T11:47:01Z"
+    generation: 1
+    labels:
+      app: server-001-flo
+      app.kubernetes.io/component: server-001-flo
+      app.kubernetes.io/instance: server-001-flo
+      app.kubernetes.io/name: server-001-flo
+      app.kubernetes.io/part-of: Server-Flo
+      app.openshift.io/runtime: httpd
+      app.openshift.io/runtime-version: 2.4-el7
+    name: server-001-flo-qqljef
+    namespace: flo04-dev
+    resourceVersion: "2496345457"
+    uid: b92a44dd-34ca-46e8-9350-32e53694dff4
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: image-registry.openshift-image-registry.svc:5000/flo04-dev/server-001-flo-qqljef
+    publicDockerImageRepository: default-route-openshift-image-registry.apps.sandbox-m2.ll9k.p1.openshiftapps.com/flo04-dev/server-001-flo-qqljef
+    tags:
+    - items:
+      - created: "2023-05-22T11:48:00Z"
+        dockerImageReference: image-registry.openshift-image-registry.svc:5000/flo04-dev/server-001-flo-qqljef@sha256:2b4a89454fab5a6ded0a86bd80152e9332dc53d88d9ff14646fda64a879d2d8f
+        generation: 1
+        image: sha256:2b4a89454fab5a6ded0a86bd80152e9332dc53d88d9ff14646fda64a879d2d8f
+      - created: "2023-05-22T11:47:31Z"
+        dockerImageReference: image-registry.openshift-image-registry.svc:5000/flo04-dev/server-001-flo-qqljef@sha256:f9e867dea83564d955f51291ebe2057ca935a8070203b003a4c19aec14077394
+        generation: 1
+        image: sha256:f9e867dea83564d955f51291ebe2057ca935a8070203b003a4c19aec14077394
+      tag: latest
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      description: Keeps track of changes in the application image
+    creationTimestamp: "2023-05-22T11:41:08Z"
+    generation: 1
+    labels:
+      app: httpd-example
+      template: httpd-example
+      template.openshift.io/template-instance-owner: 578bcfcc-ae39-4e51-a991-b4a03e03e3ec
+    name: webserver
+    namespace: flo04-dev
+    resourceVersion: "2496323295"
+    uid: e52b68c8-684e-4ca5-85dd-8ce28867ae8d
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: image-registry.openshift-image-registry.svc:5000/flo04-dev/webserver
+    publicDockerImageRepository: default-route-openshift-image-registry.apps.sandbox-m2.ll9k.p1.openshiftapps.com/flo04-dev/webserver
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"route.openshift.io/v1","kind":"Route","metadata":{"annotations":{},"labels":{"app":"counter-backend"},"name":"counter-backend","namespace":"flo04-dev"},"spec":{"port":{"targetPort":8080},"tls":{"insecureEdgeTerminationPolicy":"Redirect","termination":"edge"},"to":{"kind":"Service","name":"counter-backend"}}}
+      openshift.io/host.generated: "true"
+    creationTimestamp: "2023-05-30T14:17:35Z"
+    labels:
+      app: counter-backend
+    name: counter-backend
+    namespace: flo04-dev
+    resourceVersion: "2530715675"
+    uid: 0241fb8a-51bf-4e8c-839f-2f70b4777f51
+  spec:
+    host: counter-backend-flo04-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+    port:
+      targetPort: 8080
+    tls:
+      insecureEdgeTerminationPolicy: Redirect
+      termination: edge
+    to:
+      kind: Service
+      name: counter-backend
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: "2023-05-30T14:17:35Z"
+        status: "True"
+        type: Admitted
+      host: counter-backend-flo04-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+      routerCanonicalHostname: router-default.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+      routerName: default
+      wildcardPolicy: None
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"route.openshift.io/v1","kind":"Route","metadata":{"annotations":{},"labels":{"app":"counter-frontend"},"name":"counter-frontend","namespace":"flo04-dev"},"spec":{"port":{"targetPort":3000},"tls":{"insecureEdgeTerminationPolicy":"Redirect","termination":"edge"},"to":{"kind":"Service","name":"counter-frontend"}}}
+      openshift.io/host.generated: "true"
+    creationTimestamp: "2023-05-30T14:17:44Z"
+    labels:
+      app: counter-frontend
+    name: counter-frontend
+    namespace: flo04-dev
+    resourceVersion: "2530716794"
+    uid: 3de9db83-7b6c-46ed-aa5e-c912bdf540c8
+  spec:
+    host: counter-frontend-flo04-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+    port:
+      targetPort: 3000
+    tls:
+      insecureEdgeTerminationPolicy: Redirect
+      termination: edge
+    to:
+      kind: Service
+      name: counter-frontend
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: "2023-05-30T14:17:44Z"
+        status: "True"
+        type: Admitted
+      host: counter-frontend-flo04-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+      routerCanonicalHostname: router-default.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+      routerName: default
+      wildcardPolicy: None
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

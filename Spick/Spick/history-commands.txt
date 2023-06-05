@@ -1,0 +1,860 @@
+
+    5  minikube start --driver=docker
+    6  minikube status
+    7  kubectl cluster-info
+  314  oc status
+  315  oc login --token=sha256~os-yeoJhIBRqYcIDVEz2HIUc5JdrkG1UvYCIwKBWvwE --server=https://api.sandbox-m2.ll9k.p1.openshiftapps.com:6443
+  316  oc status
+  317  docker login ghcr.io -u KarmaKhamritshang -p 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
+  318  docker build -t ghcr.io/karmakhamritshang/html-page:v1 .
+  319  docker push ghcr.io/KarmaKhamritshang/html-page:v1
+  323  oc apply -f deployment.yaml
+  325  docker images
+  326  docker push ghcr.io/karmakhamritshang/html-page:v1
+  334  kubectl apply -f deployment.yaml
+  335  oc apply -f deployment.yaml
+  348  docker image ls
+  349  docker ps
+  350  docker run -dp 8080:8080 ghcr.io/karmakhamritshang/html-page
+  351  docker run -dp 8080:8080 ghcr.io/karmakhamritshang/html-page:v1
+  352  cat Dockerfile
+  353  ls
+  354  nano Dockerfile
+  355  nano deployment.yaml
+  356  oc apply -f deployment.yaml
+  357  docker push ghcr.io/karmakhamritshang/html-page:v1
+  359  oc get routes
+  285  oc login --token=sha256~pn5nYeFh5xgCld_mnHysMcZioSSD6oBGv7d7UCzufPc --server=https://api.sandbox-m2.ll9k.p1.openshiftapps.com:6443
+  286  oc status
+  317  git status
+  318  git push https://github.com/KarmaKhamritshang/myfirstapache httpd-ex
+  370  oc login --token=sha256~lHLHicRTFAfuFq55L3qMjKDoh4nda38iEEEcsygtldE --server=https://api.sandbox-m2.ll9k.p1.openshiftapps.com:6443
+  371  oc new-app https://github.com/KarmaKhamritshang/httpd-karma-app.git
+  372  oc new-app ubuntu/httpd-23-ubuntu~https://github.com/KarmaKhamritshang/httpd-karma-app.git
+  373  oc new-app centos/httpd-24-centos7~https://github.com/KarmaKhamritshang/httpd-karma-app.git
+  374  oc status
+  375  oc expose service/httpd-karma-app
+  406  oc login --token=sha256~lHLHicRTFAfuFq55L3qMjKDoh4nda38iEEEcsygtldE --server=https://api.sandbox-m2.ll9k.p1.openshiftapps.com:6443
+  407  oc expose service/httpd-karma-app
+  408  oc new-app centos/httpd-24-centos7~https://github.com/KarmaKhamritshang/httpd-karma-app.git
+  409  oc expose service/httpd-karma-app
+  410  oc login --token=sha256~Gpo5i9WuUYHRb48b9YdYo5rloukzyYy8gtIITFWylyY --server=https://api.sandbox-m2.ll9k.p1.openshiftapps.com:6443
+  411  oc new-app centos/httpd-24-centos7~https://github.com/KarmaKhamritshang/httpd-karma-app.git
+  412  oc login --token=sha256~Gpo5i9WuUYHRb48b9YdYo5rloukzyYy8gtIITFWylyY --server=https://api.sandbox-m2.ll9k.p1.openshiftapps.com:6443
+  413  oc new-app centos/httpd-24-centos7~https://github.com/KarmaKhamritshang/httpd-karma-app/tree/master
+  414  oc expose service/httpd-karma-application
+  415  oc expose service/httpd-karma-app
+  416  oc expose service/httpd-karma-app/tree/master
+  417  oc expose service/httpd-karma-app/master
+  418  oc expose service/httpd-karma-app
+  419* oc new-app centos/httpd-24-centos7~oc login --token=sha256~0qXuKHi3TKE9PYIjw3fCPRpcb8uPwasgdGZhfnxobGc --server=https://api.sandbox-m2.ll9k.p1.openshiftapps.com:644
+  420  oc expose service/httpd-karma-app
+  421  git status
+  422  git fetch
+  423  git pull
+  424  oc login --token=sha256~0qXuKHi3TKE9PYIjw3fCPRpcb8uPwasgdGZhfnxobGc --server=https://api.sandbox-m2.ll9k.p1.openshiftapps.com:6443
+  425* oc new-app centos/httpd-24-centos7~oc login --token=sha256~0qXuKHi3TKE9PYIjw3fCPRpcb8uPwasgdGZhfnxobGc --server=https
+  426  oc new-app centos/httpd-24-centos7~https://github.com/KarmaKhamritshang/httpd-karma-app.git
+  427  oc expose service/httpd-karma-app
+  428  oc get dc
+  448  oc start-build httpd-karma-app --from-repo=https://github.com/KarmaKhamritshang/httpd-karma-app.git --follow
+  449  oc start-build httpd-karma-app
+  469  nano Dockerfile
+  470  docker-compose up -d .
+  471  clear
+  472  docker build -t ghcr.io/KarmaKhamritshang/html-page:v1 
+  473  docker build  ghcr.io/KarmaKhamritshang/html-page:v1 
+  474  docker build -t ghcr.io/KarmaKhamritshang/html-page:v1 
+  475  docker build
+  476  docker build --help
+  477  docker build -t ghcr.io/<Github-Benutzername>/html-page:v1 .
+  478  docker build -t ghcr.io/KarmaKhamritshang/html-page:v1 .
+  479  docker build -t ghcr.io/karmakhamritshang/html-page:v1 .
+  480  docker push ghcr.io/karmakhamritshang/html-page:v1
+  481  docker push ghcr.io/KarmaKhamritshang/html-page:v1
+  482  https://github.com/https://github.com/KarmaKhamritshang/myfirstapache/myfirstapache
+  483  docker push ghcr.io/karmakhamritshang/html-page:v1
+  484  docker login ghcr.io -u KarmaKhamritshang -p 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
+  485  docker push ghcr.io/karmakhamritshang/html-page:v1
+  486  sudo docker push ghcr.io/karmakhamritshang/html-page:v1
+  487  docker logout ghcr.io
+  488  docker login ghcr.io -u KarmaKhamritshang -p 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
+  489  docker push ghcr.io/karmakhamritshang/html-page:v1
+  490  ls
+  491  cat Dockerfile
+  492  pwd
+  493  mv /home/minikube/Desktop/Dockerfile /home/minikube/Desktop/auftrag6.2 Dockerfile
+  494  mv /home/minikube/Desktop/Dockerfile /home/minikube/Desktop/auftrag6.2/Dockerfile
+  495  ls
+  496  cd auftrag6.2
+  497  ls
+  498  nano nginx-deployment.yaml
+  499  ls
+  500  cp nginx-deployment.yaml deployment.yaml
+  501  ls
+  502  rm nginx-deployment.yaml
+  503  ls
+  504  oc apply -f deployment.yaml
+  505  nano deployment.yaml
+  506  cat deployment.yaml
+  507  nano deployment-service-route.yaml
+  508  ls
+  509  nano deployment.yaml
+  510  oc apply -f deployment.yaml
+  511  oc get routes
+  512  oc get pods
+  513  kubectl apply -f https://k8s.io/examples/controllers/nginx-deployment.yaml~
+  514  kubectl apply -f https://k8s.io/examples/controllers/nginx-deployment.yaml
+  515  kubectl set image deployment.v1.apps/nginx-deployment nginx=nginx:1.16.1
+  516  kubectl get rs
+  517  kubectl get pods
+  518  oc apply -f deployment.yaml
+  519  oc get routes
+  520  oc
+  521  oc status
+  522  oc apply -f deployment.yaml
+  523  ls
+  524  cat deployment.yaml
+  525  cat Dockerfile
+  526  nano Dockerfile
+  527  docker push ghcr.io/karmakhamritshang/html-page:v1
+  528  oc apply -f deployment.yaml
+  529  cat deployment.yaml
+  530  history
+  531  history > home/history.txt
+  532  ls
+  533  nano deployment.yaml
+  534  ls
+  535  cat Dockerfile
+  536  docker login ghcr.io -u KarmaKhamritshang -p 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
+  537  oc login --token=sha256~gi6t5_9L9Y4vuvy404Zbom5cMGtwDVW7cf9ldVONBAs --server=https://api.sandbox-m2.ll9k.p1.openshiftapps.com:6443
+  538  docker login ghcr.io -u KarmaKhamritshang -p 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
+  539  docker build -t ghcr.io/karmakhamritshang/html-page:v1 .
+  540  docker push ghcr.io/karmakhamritshang/html-page:v1
+  541  sudo docker push ghcr.io/karmakhamritshang/html-page:v1
+  542  nano
+  543  cat
+  544  ls
+  545  nano deployment.yaml
+  546  docker build -t ghcr.io/karmakhamritshang/html-page:v1 .
+  547  docker push ghcr.io/karmakhamritshang/html-page:v1
+  548  docker login ghcr.io -u KarmaKhamritshang -p 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
+  549  docker push ghcr.io/karmakhamritshang/html-page:v1
+  550  oc apply -f deployment.yaml
+  551  ls
+  552  cat index.html
+  553  ls
+  554  cat deplyoment.yaml
+  555  cat deployment.yaml
+  556  ls
+  557  cat Dockerfile
+  558  cat index.html
+    2  sudo apt update
+    3  sudo apt upgrade
+    4  sudo reboot
+    5  minikube start --driver=docker
+    6  minikube status
+    7  kubectl cluster-info
+    8  minikube addons enable ingress; minikube addons enable dashboard
+    9  minikube addons enable metrics-server
+   10  minikube dashboard --url
+   11  sudo apt update
+   12  sudo poweroff
+   13  sudo apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+   14  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+   15  $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   16  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+   17  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   18  sudo apt update
+   19  sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+   20  sudo systemctl status docker
+   21  sudo apt install curl wget apt-transport-https -y
+   22  cd
+   23  wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+   24  $ sudo cp minikube-linux-amd64 /usr/local/bin/minikube
+   25  $ sudo chmod +x /usr/local/bin/minikube
+   26  $ sudo cp minikube-linux-amd64 /usr/local/bin/minikube
+   27  sudo cp minikube-linux-amd64 /usr/local/bin/minikube
+   28  $ sudo chmod +x /usr/local/bin/minikube
+   29  sudo chmod +x /usr/local/bin/minikube
+   30  ls
+   31  minikube -version
+   32  minikube --version
+   33  minikube version
+   34  curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+   35  sudo mv kubectl /usr/local/bin/
+   36  sudo chmod +x /usr/local/bin/kubectl 
+   37  kubectl version
+   38  kubectl -version
+   39  kubectl --version
+   40  kubectl
+   41  kubectl version
+   42  minikube start --driver=docker
+   43  sudo minikube start --driver=docker
+   44  $ sudo usermod -aG docker $USER
+   45  newgroup docker
+   46  sudo newgroup docker
+   47  sudo newgrp docker
+   48  newgrp docker
+   49  ls
+   50  history
+   51  vi startminikube.sh
+   52  sudo reboot
+   53  history
+   54  minikube start --driver=docker
+   55  minikube dashboard --url &
+   56  chmod +x startminikube.sh 
+   57  ls
+   58  cd ..
+   59  cd Do
+   60  cd Downloads/
+   61  ls
+   62  tar xf oc.tar.gz 
+   63  ls
+   64  sudo mv oc `which kubectl`
+   65  which oc
+   66  ls /usr/local/bin/
+   67  ls
+   68  tar xvf oc.tar.gz 
+   69  mv oc /usr/local/bin
+   70  sudo mv oc /usr/local/bin
+   71  chmod +x /usr/local/bin
+   72  sudo chmod +x /usr/local/bin
+   73  ls
+   74  sudo chmod -x /usr/local/bin
+   75  sudo chmod -x /usr/local/bin/oc
+   76  ls -l /usr/local
+   77  kubectl
+   78  sudo chmod +x /usr/local/bin
+   79  kubectl
+   80  oc
+   81  ls -l /usr/local/bin
+   82  chmod +x /usr/local/bin/oc
+   83  oc
+   84  sudo poweroff
+   85  sudo apt update
+   86  which kubectl
+   87  oc
+   88  sudo apt update
+   89  sudo apt upgrade
+   90  sudo reboot
+   91  minikube status
+   92  kubectl get node
+   93  docker ps -a
+   94  docker ps
+   95  ls
+   96  mkdir K8S-Demo
+   97  cd K8S-Demo
+   98  cd ..
+   99  code K8S-Demo
+  100  sudo apt install open-vm-tools-desktop
+  101  sudo reboot now
+  102  docker-compose ps
+  103  ls
+  104  cd Desktop
+  105  ls
+  106  docker-compose ps
+  107  ls
+  108  cd composetest
+  109  ls
+  110  docker-compose ps
+  111  docker ps
+  112  docker ps -a
+  113  Waiting for cache lock: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 11570 (unattended-upgr)
+  114  cd ..
+  115  docker pull google/docker-registry
+  116  docker image ls
+  117  docker run
+  118  docker run 8c5778a32e2f
+  119  docker run --help
+  120  docker ps -a
+  121  docker ps
+  122  docker run -d -e GCS_BUCKET=your-bucket -p 5000:5000 google/docker-registry
+  123  docker ps
+  124  $docker ps -a
+  125  docker ps -a
+  126  docker start laughing_proskuriakova
+  127  docker ps
+  128  docker run accb6d39971f
+  129  docker login
+  130  docker run accb6d39971f
+  131  docker ps
+  132  docker ps -a
+  133  ./run.sh
+  134  docker run -d -e GCS_BUCKET=your-bucket -e STORAGE_PATH=/containers -p 5000:5000 google/docker-registry
+  135  docker ps
+  136  docker run -ti --name gcloud-config google/cloud-sdk gcloud auth login
+  150  minikube start
+  151  minikube dashboard
+  152  docker ps
+  153  open localhost
+  154  open http://localhost
+  155  ifconfig
+  156  sudo apt install net-tools
+  157  sudo apt install -y net-tools
+  158  minikube start --driver=docker
+  159  minikube dashboard --url
+  160  ls
+  161  cat startminikube.sh
+  162  ./startminikube.sh
+  163  cls
+  164  clear
+  165  ls
+  166  mkdir composetest
+  167  cd composetest
+  168  nano app.py
+  169  nano requirements.txt
+  170  nano Dockerfile
+  171  nano docker-compose.yml
+  172  docker compose up
+  173  docker compose up -d
+  174  docker compose up
+  175  ls
+  176  docker-compose up
+  177  sudo apt install docker-compose
+  178  ifconfig
+  179  ping google.com
+  180  sudo apt install -y docker-compose
+  181  sudo apt install open-vm-tools-desktop
+  182  sudo lsof /var/lib/dpkg/lock-frontend
+  183  sudo kill -9 11570
+  184  sudo apt install -y docker-compose
+  185  docker compose up
+  186  docker-compose up
+  187  echo -n
+  188  echo --help
+  189  echo $help
+  190  echo $echo help
+  191  echo $--help
+  192  man echo
+  193  echo -n mongouser | base64
+  194  echo -n mongopassword | base64
+  195  kubectl get pod
+  196  cd K8S-Demo
+  197  kubectl apply -f mongo-config.yaml
+  198  kubectl apply -f mongo-secret.yaml
+  199  kubectl apply -f mongo.yaml
+  200  kubectl apply -f webapp.yaml
+  201  kubectl get all
+  202  kubctl descrip service webapp-service
+  203  kubctl describe service webapp-service
+  204  kubectl describe service webapp-service
+  205  kubectl get svc
+  206  minikube ip
+  207  kubectl get node -o wide
+  208  ifconfig
+  209  clear
+  210  minikube service webapp-service --url
+  211  minikube stop
+  212  minikube ps
+  213  minikube get pod
+  214  mikube pod
+  215  minikube --help
+  216  history
+  217  kubectl get pod
+  218  kubectl get svc
+  219  kubectl apply -f mongo-config.yaml
+  220  kubectl apply -f mongo-config.yaml --kubeconfig
+  221  kubectl apply -f mongo-config.yaml --kubeconfig --help
+  222  kubectl apply -f mongo-config.yaml --kubeconfig
+  223  kubectl get all
+  224  minikube start
+  225  minikube dashboard
+  226  bg
+  227  fg
+  228  bg
+  229  kubectl get all
+  230  kubectl apply -f webapp.yaml
+  231  kubectl get all
+  232  ls -l
+  233  vi mongo-confi.yaml
+  234  more mongo-config.yaml 
+  235  more mongo.yaml 
+  236  kubectl apply -f mongo-config.yaml
+  237  kubectl apply -f mongo-secret.yaml
+  238  kubectl apply -f mongo.yaml
+  239  kubectl apply -f webapp.yaml
+  240  kubectl get all
+  241  more mongo-secret.yaml 
+  242  more webapp.yaml 
+  243  kubectl apply -f webapp.yaml
+  244  kubectl apply -f mongo.yaml
+  245  kubectl apply -f mongo-secret.yaml
+  246  kubectl apply -f mongo-config.yaml
+  247  kubectl get all
+  248  kubectl apply -f mongo-config.yaml
+  249  kubectl apply -f mongo-secret.yaml
+  250  kubectl apply -f mongo.yaml
+  251  kubectl apply -f webapp.yaml
+  252  kubectl get all
+  253  kubectl
+  254  kubectl describe service webapp-service
+  255  history
+  256  minikube ip
+  257  exit
+  258  ls
+  259  code K8S-Demo
+  260  docker ps
+  261  docker ps -a
+  262  minikube start
+  263  minikube dashboard
+  264  exit
+  265  shutdown now
+  266  ls
+  267  cd 
+  268  ls Desktop
+  269  /home/karma/Desktop/startminikube.sh
+  270  pwd
+  271  /home/minikube/Desktop/startminikube.sh
+  272  bg
+  273  fg
+  274  docker ps
+  275  kubectl get all
+  276  minikube ip
+  277  kubectl get services
+  278  clear
+  279  shutdown now
+  280  minikube start
+  281  ls
+  282  cat minikube-linux-amd64
+  283  ls
+  284  cd K8S-Demo
+  285  ls
+  286  cd ..
+  287  code K8S-Demo
+  288  minikube dashboard
+  289  fg
+  290  bg
+  291  kubectl config view
+  292  rm ~/.kube/config
+  293  kubectl config view
+  294  kubectl config-set-credentials karmakun04/api.sandbox-m2.ll9k.p1.openshiftapps.com:6443 --token=sha256~z18YjDcFPoiD0swz8xAGiaU0_0u96YeUknzI-5pX3VQ
+  295  kubectl config set-credentials karmakun04/api.sandbox-m2.ll9k.p1.openshiftapps.com:6443 --token=sha256~z18YjDcFPoiD0swz8xAGiaU0_0u96YeUknzI-5pX3VQ
+  296  kubectl config set-cluster api.sandbox-m2.ll9k.p1.openshiftapps.com:6443 --server=https://api.sandbox-m2.ll9k.p1.openshiftapps.com:6443
+  297  kubectl conifg set-context karmakun04-dev/api.sandbox-m2.ll9k.p1.openshiftapps.com:6443/karmakun04 --user=karmakun04/api.sandbox-m2.ll9k.p1.openshiftapps.com:6443 --namespace=karmakun04-dev --cluster=api.sandbox-m2.ll9k.p1.openshiftapps.com:6443
+  298  kubectl config set-context karmakun04-dev/api.sandbox-m2.ll9k.p1.openshiftapps.com:6443/karmakun04 --user=karmakun04/api.sandbox-m2.ll9k.p1.openshiftapps.com:6443 --namespace=karmakun04-dev --cluster=api.sandbox-m2.ll9k.p1.openshiftapps.com:6443
+  299  kubectl config use-context karmakun04-dev/api.sandbox-m2.ll9k.p1.openshiftapps.com:6443/karmakun04
+  300  ls
+  301  mkdir quotesapp
+  302  cd quotesapp
+  303  git clone https://github.com/redhat-developer-demos/quotesweb.git
+  304  git clone https://github.com/redhat-developer-demos/quotemysql.git
+  305  git clone https://github.com/redhat-developer-demos/qotd-python.git
+  306  kubectl create -f quotes-deployment.yaml
+  307  ls
+  308  cd qotd-python
+  309  kubectl create -f quotes-deployment.yaml
+  310  ls
+  311  cd k8s
+  312  ls
+  313  kubectl create -f quotes-deployment.yaml
+  314  kubectl create -f service.yaml
+  315  kubectl create -f route.yaml
+  316  kubectl get routes
+  317  curl http://quotes-karmakun04-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/
+  318  curl http://quotes-karmakun04-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/.content
+  319  clear
+  320  ls
+  321  cat quotes-deployment.yaml
+  322  ls
+  323  cd ..
+  324  ls
+  325  cd ..
+  326  ls
+  327  cd quotesweb
+  328  ls
+  329  cat README.md
+  330  cd k8ts
+  331  cd k8s
+  332  kubectl create -f quotesweb-deployment.yaml
+  333  kubectl create -f quotesweb-service.yaml
+  334  kubectl create -f quotesweb-route.yaml
+  335  kubectl get routes
+  336  kubectl get pods
+  337  kubectl scale deployments/quotes --replicas=3
+  338  cd ..
+  339  ls
+  340  cd quotemysql
+  341  ls
+  342  cat mysqlvolume.yaml
+  343  nano mysqlvolume.yaml
+  344  kubectl create -f mysqlvolume.yaml
+  345  cat secret.yaml
+  346  cat mysql-secret.yaml
+  347  kubectl create -f mysql-secret.yaml
+  348  cat mysql-deployment.yaml
+  349  kubectl create -f mysql-deployment.yaml
+  350  $a = (kubectl get pods | select-string 'mysql') -match 'mysql([^\s]+)'; $podname = $matches[0]
+  351  $a = (kubectl get pods | select-string 'mysql') -match 'mysql([^\s]+)'; 
+  352  a = (kubectl get pods | select-string 'mysql') -match 'mysql([^\s]+)'; 
+  353  a = (kubectl get pods | select-string 'mysql') -match 'mysql([^\s]+)'
+  354  ps
+  355  powershell
+  356  shell
+  357  $a = (kubectl get pods | select-string 'mysql') -match 'mysql([^\s]+)'; $podname = $matches[0]
+  358  $podname
+  359  cat $podname
+  360  cat %podname%
+  361  cat $podname%
+  362  cat $podname
+  363  ls $podnmae
+  364  kubectl cp ./create_database_quotesdb.sql ${podname}:/tmp/create_database_quotesdb.sql
+  365  export PODNAME=$(a=$(kubectl get pods | grep 'mysql') && set -- $a && echo $1)
+  366  echo $PODNAME
+  367  kubectl cp ./create_database_quotesdb.sql $PODNAME:/tmp/create_database_quotesdb.sql
+  368  kubectl cp ./create_database.sh $PODNAME:/tmp/create_database.sh
+  369  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_database.sh
+  370  kubectl cp ./create_table_quotes.sql $PODNAME:/tmp/create_table_quotes.sql
+  371  kubectl cp ./create_tables.sh $PODNAME:/tmp/create_tables.sh
+  372  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_tables.sh
+  373  kubectl cp ./populate_table_quotes_BASH.sql $PODNAME:/tmp/populate_table_quotes_BASH.sql
+  374  kubectl cp ./quotes.csv $PODNAME:/tmp/quotes.csv
+  375  kubectl cp ./populate_tables_BASH.sh $PODNAME:/tmp/populate_tables_BASH.sh
+  376  kubectl exec deploy/mysql -- /bin/bash ./tmp/populate_tables_BASH.sh
+  377  kubectl cp ./query_table_quotes.sql $PODNAME:/tmp/query_table_quotes.sql
+  378  kubectl cp ./query_table_quotes.sh $PODNAME:/tmp/query_table_quotes.sh
+  379  kubectl exec deploy/mysql -- /bin/bash ./tmp/query_table_quotes.sh
+  380  LS
+  381  ls
+  382  kubectl set env deployment/quotes DB_SERVICE_NAME=mysql
+  383  kubectl set image deploy quotes quotes=quay.io/donschenck/quotes:v2
+  384  kubectl delete pod $PODNAME
+  385  kubectl get routes
+  386  ls
+  387  echo $PODNAME
+  388  kubectl set image deploy quotes quotes=quay.io/donschenck/quotes:v2
+  389  export PODNAME=$(a=$(kubectl get pods | grep 'mysql') && set -- $a && echo $1)
+  390  kubectl cp ./create_database_quotesdb.sql $PODNAME:/tmp/create_database_quotesdb.sql
+  391  kubectl cp ./create_database.sh $PODNAME:/tmp/create_database.sh
+  392  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_database.sh
+  393  kubectl cp ./create_table_quotes.sql $PODNAME:/tmp/create_table_quotes.sql
+  394  kubectl cp ./create_tables.sh $PODNAME:/tmp/create_tables.sh
+  395  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_tables.sh
+  396  kubectl cp ./populate_table_quotes_BASH.sql $PODNAME:/tmp/populate_table_quotes_BASH.sql
+  397  kubectl cp ./quotes.csv $PODNAME:/tmp/quotes.csv
+  398  kubectl cp ./populate_tables_BASH.sh $PODNAME:/tmp/populate_tables_BASH.sh
+  399  kubectl exec deploy/mysql -- /bin/bash ./tmp/populate_tables_BASH.sh
+  400  kubectl cp ./query_table_quotes.sql $PODNAME:/tmp/query_table_quotes.sql
+  401  kubectl cp ./query_table_quotes.sh $PODNAME:/tmp/query_table_quotes.sh
+  402  kubectl exec deploy/mysql -- /bin/bash ./tmp/query_table_quotes.sh
+  403  kubectl set env deployment/quotes DB_SERVICE_NAME=mysql
+  404  kubectl set image deploy quotes quotes=quay.io/donschenck/quotes:v2
+  405  kubectl get routes
+  406  ls
+  407  cd ..
+  408  ls
+  409  cd qotd-python
+  410  ls
+  411  cd k8s
+  412  ls
+  413  kubectl create -f quotes-deployment.yaml
+  414  kubectl create -f service.yaml
+  415  kubectl create -f route.yaml
+  416  cd ..
+  417  cd quotesweb
+  418  cd k8s
+  419  kubectl create -f quotesweb-deployment.yaml
+  420  kubectl create -f quotesweb-service.yaml
+  421  kubectl create -f quotesweb-route.yaml
+  422  kubectl get routes
+  423  kubectl scale deployments/quotes --replicas=3
+  424  cd ..
+  425  ls
+  426  cd quotemysql
+  427  cd k8ts
+  428  cd k8s
+  429  ls
+  430  kubectl create -f mysqlvolume.yaml
+  431  kubectl create -f mysql-secret.yaml
+  432  kubectl create -f mysql-deployment.yaml
+  433  export PODNAME=$(a=$(kubectl get pods | grep 'mysql') && set -- $a && echo $1)
+  434  kubectl cp ./create_database_quotesdb.sql $PODNAME:/tmp/create_database_quotesdb.sql
+  435  kubectl cp ./create_database.sh $PODNAME:/tmp/create_database.sh
+  436  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_database.sh
+  437  kubectl cp ./create_table_quotes.sql $PODNAME:/tmp/create_table_quotes.sql
+  438  kubectl cp ./create_tables.sh $PODNAME:/tmp/create_tables.sh
+  439  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_tables.sh
+  440  kubectl cp ./populate_table_quotes_BASH.sql $PODNAME:/tmp/populate_table_quotes_BASH.sql
+  441  kubectl cp ./quotes.csv $PODNAME:/tmp/quotes.csv
+  442  kubectl cp ./populate_tables_BASH.sh $PODNAME:/tmp/populate_tables_BASH.sh
+  443  kubectl exec deploy/mysql -- /bin/bash ./tmp/populate_tables_BASH.sh
+  444  kubectl cp ./query_table_quotes.sql $PODNAME:/tmp/query_table_quotes.sql
+  445  kubectl cp ./query_table_quotes.sh $PODNAME:/tmp/query_table_quotes.sh
+  446  kubectl exec deploy/mysql -- /bin/bash ./tmp/query_table_quotes.sh
+  447  kubectl set env deployment/quotes DB_SERVICE_NAME=mysql
+  448  kubectl set image deploy quotes quotes=quay.io/donschenck/quotes:v2
+  449  kubectl get routes
+  450  oc get pods
+  451  oc get service
+  452  oc get services
+  453  echo $PODNAME
+  454  mysql
+  455  ls
+  456  cat README.md
+  457  kubectl delete pod $PODNAME
+  458  echo $PODNAME
+  459  kubectl delete all -l sandbox=learn-kubernetes
+  460  cd ..
+  461  ls
+  462  cd  qotd-python
+  463  ls
+  464  cd k8s
+  465  ls
+  466  kubectl create -f quotes-deployment.yaml
+  467  kubectl create -f service.yaml
+  468  kubectl create -f route.yaml
+  469  cd ..
+  470  cd quotesweb
+  471  cd k8s
+  472  kubectl create -f quotesweb-deployment.yaml
+  473  kubectl create -f quotesweb-service.yaml
+  474  kubectl create -f quotesweb-route.yaml
+  475  kubectl scale deployments/quotes --replicas=3
+  476  cd ..
+  477  cd quotesmysql
+  478  ls
+  479  cd quotesweb
+  480  kubectl create -f mysqlvolume.yaml
+  481  kubectl create -f mysql-secret.yaml
+  482  ls
+  483  cd ..
+  484  ls
+  485  cd quotemysql
+  486  ls
+  487  kubectl create -f mysqlvolume.yaml
+  488  ls
+  489  kubectl create -f mysql-secret.yaml
+  490  kubectl create -f mysql-deployment.yaml
+  491  export PODNAME=$(a=$(kubectl get pods | grep 'mysql') && set -- $a && echo $1)
+  492  kubectl cp ./create_database_quotesdb.sql $PODNAME:/tmp/create_database_quotesdb.sql
+  493  kubectl cp ./create_database.sh $PODNAME:/tmp/create_database.sh
+  494  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_database.sh
+  495  kubectl cp ./create_table_quotes.sql $PODNAME:/tmp/create_table_quotes.sql
+  496  kubectl cp ./create_tables.sh $PODNAME:/tmp/create_tables.sh
+  497  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_tables.sh
+  498  kubectl cp ./populate_table_quotes_BASH.sql $PODNAME:/tmp/populate_table_quotes_BASH.sql
+  499  kubectl cp ./quotes.csv $PODNAME:/tmp/quotes.csv
+  500  kubectl cp ./populate_tables_BASH.sh $PODNAME:/tmp/populate_tables_BASH.sh
+  501  kubectl exec deploy/mysql -- /bin/bash ./tmp/populate_tables_BASH.sh
+  502  kubectl cp ./query_table_quotes.sql $PODNAME:/tmp/query_table_quotes.sql
+  503  kubectl cp ./query_table_quotes.sh $PODNAME:/tmp/query_table_quotes.sh
+  504  kubectl exec deploy/mysql -- /bin/bash ./tmp/query_table_quotes.sh
+  505  kubectl set env deployment/quotes DB_SERVICE_NAME=mysql
+  506  kubectl set image deploy quotes quotes=quay.io/donschenck/quotes:v2
+  507  oc get pods
+  508  oc delete pod/mysql-749cfb6d5f-4944c
+  509  oc delete pod/quotes-6f44767b6d-7xczp
+  510  oc delete pod/quotes-6f44767b6d-zf8s5
+  511  oc delete pod/quotes-6f44767b6d-zmg8m
+  512  oc delete pod/quotesweb-8694f868c5-lqjkq
+  513  oc get pods
+  514  oc delete pod
+  515  oc delete pod --help
+  516  oc delete pod --all
+  517  oc get pods
+  518  oc delete pod --all --force
+  519  oc get pods
+  520  cd ..
+  521  ls
+  522  cd qotd-python
+  523  cd k8s
+  524  kubectl create -f quotes-deployment.yaml
+  525  kubectl create -f service.yaml
+  526  kubectl create -f route.yaml
+  527  kubectl apply
+  528  kubectl apply -f quotes-deployment.yaml
+  529  kubectl apply -f service.yaml
+  530  kubectl apply -f route.yaml
+  531  kubectl apply -f route.yaml --save-config
+  532  kubectl apply --help
+  533  clear
+  534  cd ..
+  535  ls
+  536  cd quotesweb
+  537  ls
+  538  cd k8s
+  539  ls
+  540  kubectl create -f quotesweb-deployment.yaml
+  541  kubectl create -f quotesweb-service.yaml
+  542  kubectl create -f quotesweb-route.yaml
+  543  kubectl scale deployments/quotes --replicas=3
+  544  cd ..
+  545  ls
+  546  cd quotemysql
+  547  kubectl create -f mysqlvolume.yaml
+  548  kubectl create -f mysql-secret.yaml
+  549  kubectl create -f mysql-deployment.yaml
+  550  kubectl create -f mysql-secret.yaml
+  551  export PODNAME=$(a=$(kubectl get pods | grep 'mysql') && set -- $a && echo $1)
+  552  kubectl cp ./create_database_quotesdb.sql $PODNAME:/tmp/create_database_quotesdb.sql
+  553  kubectl cp ./create_database.sh $PODNAME:/tmp/create_database.sh
+  554  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_database.sh
+  555  kubectl cp ./create_table_quotes.sql $PODNAME:/tmp/create_table_quotes.sql
+  556  kubectl cp ./create_tables.sh $PODNAME:/tmp/create_tables.sh
+  557  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_tables.sh
+  558  kubectl cp ./populate_table_quotes_BASH.sql $PODNAME:/tmp/populate_table_quotes_BASH.sql
+  559  kubectl cp ./quotes.csv $PODNAME:/tmp/quotes.csv
+  560  kubectl cp ./populate_tables_BASH.sh $PODNAME:/tmp/populate_tables_BASH.sh
+  561  kubectl exec deploy/mysql -- /bin/bash ./tmp/populate_tables_BASH.sh
+  562  kubectl cp ./query_table_quotes.sql $PODNAME:/tmp/query_table_quotes.sql
+  563  kubectl cp ./query_table_quotes.sh $PODNAME:/tmp/query_table_quotes.sh
+  564  kubectl exec deploy/mysql -- /bin/bash ./tmp/query_table_quotes.sh
+  565  kubectl set env deployment/quotes DB_SERVICE_NAME=mysql
+  566  kubectl set image deploy quotes quotes=quay.io/donschenck/quotes:v2
+  567  kubectl delete pod $PODNAME
+  568  oc get pods
+  569  cd ..
+  570  ls
+  571  cd qotd-python
+  572  ls
+  573  cd k8s
+  574  ls
+  575  cat quotes-deployment.yaml
+  576  nano quotes-deployment.yaml
+  577  ls
+  578  kubectl create -f quotes-deployment.yaml
+  579  kubectl apply -f quotes-deployment.yaml
+  580  nano service.yaml
+  581  cd ..
+  582  ls
+  583  cd ..
+  584  ls
+  585  rmdir -r qotd-python
+  586  rmdir -f qotd-python
+  587  rm -f qotd-python
+  588  rm -r qotd-python
+  589  ls
+  590  rm -fR qotd-python
+  591  rm -fR qoutemysql quotesweb
+  592  ls
+  593  rm -Rf quotemysql
+  594  ls
+  595  git clone https://github.com/redhat-developer-demos/quotesweb.git
+  596  ls
+  597  git clone https://github.com/redhat-developer-demos/quotemysql.git
+  598  git clone https://github.com/redhat-developer-demos/qotd-python.git
+  599  ls
+  600  cd qotd-python/k8s
+  601  kubectl create -f quotes-deployment.yaml
+  602  kubectl create -f service.yaml
+  603  kubectl create -f route.yaml
+  604  cd ..
+  605  cd quotesweb/k8s
+  606  kubectl create -f quotesweb-deployment.yaml
+  607  kubectl create -f quotesweb-service.yaml
+  608  kubectl create -f quotesweb-route.yaml
+  609  kubectl scale deployments/quotes --replicas=3
+  610  cd ..
+  611  ls
+  612  cd quotemysql
+  613  kubectl create -f mysqlvolume.yaml
+  614  kubectl create -f mysql-secret.yaml
+  615  kubectl create -f mysql-deployment.yaml
+  616  ls
+  617  cat quotes.csv
+  618  cd ..
+  619  ls
+  620  cat mysql-deployment.yaml
+  621  ls
+  622  cd quotemysql
+  623  cat mysql-deployment.yaml
+  624  ls
+  625  cat mysql-secret.yaml
+  626  cat mysql-service.yaml
+  627  ls
+  628  export PODNAME=$(a=$(kubectl get pods | grep 'mysql') && set -- $a && echo $1)
+  629  kubectl cp ./create_database_quotesdb.sql $PODNAME:/tmp/create_database_quotesdb.sql
+  630  export PODNAME=$(a=$(kubectl get pods | grep 'mysql') && set -- $a && echo $1)
+  631  kubectl cp ./create_database_quotesdb.sql $PODNAME:/tmp/create_database_quotesdb.sql
+  632  kubectl cp ./create_database.sh $PODNAME:/tmp/create_database.sh
+  633  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_database.sh
+  634  kubectl cp ./create_table_quotes.sql $PODNAME:/tmp/create_table_quotes.sql
+  635  kubectl cp ./create_tables.sh $PODNAME:/tmp/create_tables.sh
+  636  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_tables.sh
+  637  kubectl cp ./populate_table_quotes_BASH.sql $PODNAME:/tmp/populate_table_quotes_BASH.sql
+  638  kubectl cp ./quotes.csv $PODNAME:/tmp/quotes.csv
+  639  kubectl cp ./populate_tables_BASH.sh $PODNAME:/tmp/populate_tables_BASH.sh
+  640  kubectl exec deploy/mysql -- /bin/bash ./tmp/populate_tables_BASH.sh
+  641  kubectl cp ./query_table_quotes.sql $PODNAME:/tmp/query_table_quotes.sql
+  642  kubectl cp ./query_table_quotes.sh $PODNAME:/tmp/query_table_quotes.sh
+  643  kubectl exec deploy/mysql -- /bin/bash ./tmp/query_table_quotes.sh
+  644  kubectl set env deployment/quotes DB_SERVICE_NAME=mysql
+  645  kubectl set image deploy quotes quotes=quay.io/donschenck/quotes:v2
+  646  kubectl delete pod $PODNAME
+  647  kubectl get routes
+  648  kubectl delete all -l learn-kubernetes=quotesweb
+  649  kubectl delete all -l learn-kubernetes=quotemysql
+  650  kubectl delete all -l sandbox=learn-kubernetes
+  651  ls
+  652  cd ..
+  653  ls
+  654  cd quotesapp
+  655  rm -rF quotemysql quotesweb
+  656  rm -fR quotemysql quotesweb
+  657  ls
+  658  rm -fR qotd-python
+  659  git clone https://github.com/redhat-developer-demos/quotesweb.git
+  660  git clone https://github.com/redhat-developer-demos/quotemysql.git
+  661  git clone https://github.com/redhat-developer-demos/qotd-python.git
+  662  cd qotd-python
+  663  ls
+  664  cd k8s
+  665  kubectl create -f quotes-deployment.yaml
+  666  kubectl create -f service.yaml
+  667  kubectl create -f route.yaml
+  668  cd ..
+  669  cd quotesweb
+  670  cd k8s
+  671  kubectl create -f quotesweb-deployment.yaml
+  672  kubectl create -f quotesweb-service.yaml
+  673  kubectl create -f quotesweb-route.yaml
+  674  kubectl scale deployments/quotes --replicas=1
+  675  cd ..
+  676  cd quotesmysql
+  677  ls
+  678  cd quotemysql
+  679  ls
+  680  kubectl create -f mysqlvolume.yaml
+  681  kubectl create -f mysql-secret.yaml
+  682  kubectl create -f mysql-deployment.yaml
+  683  kubectl apply -f mysql-secret.yaml
+  684  kubectl apply -f mysql-deployment.yaml
+  685  kubectl apply -f mysqlvolume.yaml
+  686  export PODNAME=$(a=$(kubectl get pods | grep 'mysql') && set -- $a && echo $1)
+  687  kubectl cp ./create_database_quotesdb.sql $PODNAME:/tmp/create_database_quotesdb.sql 
+  688  kubectl cp ./create_database.sh $PODNAME:/tmp/create_database.sh
+  689  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_database.sh
+  690  kubectl cp ./create_table_quotes.sql $PODNAME:/tmp/create_table_quotes.sql
+  691  kubectl cp ./create_tables.sh $PODNAME:/tmp/create_tables.sh
+  692  kubectl exec deploy/mysql -- /bin/bash ./tmp/create_tables.sh
+  693  kubectl cp ./populate_table_quotes_BASH.sql $PODNAME:/tmp/populate_table_quotes_BASH.sql
+  694  kubectl cp ./quotes.csv $PODNAME:/tmp/quotes.csv
+  695  kubectl cp ./populate_tables_BASH.sh $PODNAME:/tmp/populate_tables_BASH.sh
+  696  kubectl exec deploy/mysql -- /bin/bash ./tmp/populate_tables_BASH.sh
+  697  kubectl cp ./query_table_quotes.sql $PODNAME:/tmp/query_table_quotes.sql
+  698  kubectl cp ./query_table_quotes.sh $PODNAME:/tmp/query_table_quotes.sh
+  699  kubectl exec deploy/mysql -- /bin/bash ./tmp/query_table_quotes.sh
+  700  kubectl set env deployment/quotes DB_SERVICE_NAME=mysql
+  701  kubectl set image deploy quotes quotes=quay.io/donschenck/quotes:v2
+  702  echo $PODNAME
+  703  ls
+  704  oc create -f mysql-service.yaml 
+  705  oc apply -f mysql-service.yaml 
+  706  kubectl cp ./query_table_quotes.sql $PODNAME:/tmp/query_table_quotes.sql
+  707  kubectl cp ./query_table_quotes.sh $PODNAME:/tmp/query_table_quotes.sh
+  708  kubectl exec deploy/mysql -- /bin/bash ./tmp/query_table_quotes.sh
+  709  cd
+  710  git clone https://github.com/pjhades/bash-snake.git
+  711  ls
+  712  cd bash-snkae
+  713  cd bash-snake
+  714  ls
+  715  ./snake.sh
+  716  ls
+  717  cd ..
+  718  rm -fR bash-snake
+  719  ls
+  720  cd quotesapp
+  721  ls
+  722  history
+minikube@minikube
